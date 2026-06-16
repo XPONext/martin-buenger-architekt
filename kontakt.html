@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - Martin Bünger Architekt, Bad Honnef</title>
+  <meta name="description" content="Kontaktformular für Martin Bünger Architekt in Bad Honnef – Kaufberatung, Planung, Bauleitung, Umbau und Modernisierung.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #0D0D0D; -webkit-font-smoothing: antialiased; }
+    a { transition: color 0.2s; text-decoration: none; }
+    a:hover { color: #000 !important; }
+    .link-on-dark:hover { color: #fff !important; opacity: 0.7; }
+
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      position: absolute; top: 100%; left: 50%;
+      padding-top: 0.75rem;
+      opacity: 0; visibility: hidden;
+      transform: translateX(-50%) translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1; visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu-inner {
+      background: #fff; border: 1px solid #E5E5E5;
+      min-width: 280px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    }
+    .nav-dropdown-menu a {
+      display: block; padding: 0.8rem 1.4rem;
+      font-size: 0.76rem; color: #4B4B4B !important;
+      letter-spacing: 0.04em; text-transform: none;
+      line-height: 1.4; text-align: left;
+      border-bottom: 1px solid #E5E5E5;
+    }
+    .nav-dropdown-menu a:last-child { border-bottom: none; }
+    .nav-dropdown-menu a:hover { background: #F7F7F7; color: #0D0D0D !important; }
+
+    .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-field label { font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: #9CA3AF; }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #0D0D0D;
+      background: #fff;
+      border: none;
+      border-bottom: 1px solid #E5E5E5;
+      padding: 0.75rem 0;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+      padding-right: 1.5rem;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-bottom-color: #0D0D0D; }
+    .form-field textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
+
+    .submit-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #0D0D0D;
+      border: none;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .submit-btn:hover { opacity: 0.75; }
+
+    #success-msg {
+      display: none;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid #E5E5E5;
+      font-size: 0.88rem;
+      color: #4B4B4B;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .kontakt-layout { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 6%;position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #E5E5E5;z-index:100;">
+    <a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#0D0D0D;">Martin Bünger Architekt</a>
+    <div class="nav-links" style="display:flex;gap:2.5rem;align-items:center;">
+      <div class="nav-dropdown">
+        <a href="index.html#leistungen" style="font-size:0.76rem;color:#4B4B4B;letter-spacing:0.06em;text-transform:uppercase;">Leistungen</a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-menu-inner">
+            <a href="leistungen/kaufberatung.html">Kaufberatung</a>
+            <a href="leistungen/leistungsphasen.html">Leistungsphasen 1-9</a>
+            <a href="leistungen/bauleitung.html">Bauleitung</a>
+            <a href="leistungen/umbau-modernisierung.html">Umbau und Modernisierung</a>
+            <a href="leistungen/antraege.html">Abgeschlossenheitsbescheinigung & Bauvoranfrage</a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#projekte" style="font-size:0.76rem;color:#4B4B4B;letter-spacing:0.06em;text-transform:uppercase;">Projekte</a>
+      <a href="index.html#buero"    style="font-size:0.76rem;color:#4B4B4B;letter-spacing:0.06em;text-transform:uppercase;">Über uns</a>
+      <a href="kontakt.html"        style="font-size:0.76rem;color:#0D0D0D;letter-spacing:0.06em;text-transform:uppercase;">Kontakt</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding:6rem 6% 4rem;">
+    <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.5rem;">Anfrage</p>
+    <h1 style="font-family:'DM Sans',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-0.025em;color:#0D0D0D;max-width:780px;">
+      Lassen Sie uns<br>gemeinsam planen.
+    </h1>
+  </section>
+
+  <!-- FORMULAR + KONTAKTDATEN -->
+  <section style="padding:1rem 6% 7rem;">
+    <div class="kontakt-layout" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:7rem;align-items:start;">
+
+      <!-- FORMULAR -->
+      <form id="kontaktForm" action="send.php" method="POST" style="display:flex;flex-direction:column;gap:2rem;">
+
+        <!-- Thema -->
+        <div class="form-field">
+          <label for="thema">Worum geht es?</label>
+          <select id="thema" name="thema" required>
+            <option value="" disabled selected>Bitte auswählen</option>
+            <option value="Kaufberatung">Kaufberatung</option>
+            <option value="Leistungsphasen 1-9 (Planung & Ausführung)">Leistungsphasen 1-9 (Planung & Ausführung)</option>
+            <option value="Bauleitung">Bauleitung</option>
+            <option value="Umbau und Modernisierung">Umbau und Modernisierung</option>
+            <option value="Abgeschlossenheitsbescheinigung / Bauvoranfrage">Abgeschlossenheitsbescheinigung / Bauvoranfrage</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+
+        <!-- Name + E-Mail -->
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+          </div>
+        </div>
+
+        <!-- Telefon -->
+        <div class="form-field">
+          <label for="telefon">Telefon <span style="color:#C9C5BE;">(optional)</span></label>
+          <input type="tel" id="telefon" name="telefon" placeholder="0228 / ...">
+        </div>
+
+        <!-- Nachricht -->
+        <div class="form-field">
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Vorhaben..." required></textarea>
+        </div>
+
+        <div id="success-msg" style="padding:1.25rem 1.5rem;border:1px solid #E5E5E5;font-size:0.88rem;color:#4B4B4B;line-height:1.7;display:none;">
+          Vielen Dank für Ihre Nachricht. Wir melden uns in Kürze bei Ihnen.
+        </div>
+        <div id="error-msg" style="padding:1.25rem 1.5rem;border:1px solid #E5E5E5;font-size:0.88rem;color:#9CA3AF;line-height:1.7;display:none;">
+          Beim Versenden ist etwas schiefgelaufen. Bitte schreiben Sie uns direkt an <a href="mailto:martin.buenger@t-online.de" style="color:#0D0D0D;border-bottom:1px solid #E5E5E5;">martin.buenger@t-online.de</a>.
+        </div>
+
+        <div>
+          <button type="submit" class="submit-btn">Anfrage senden</button>
+        </div>
+      </form>
+
+      <!-- KONTAKTDATEN -->
+      <div style="display:flex;flex-direction:column;gap:2rem;padding-top:0.5rem;">
+        <div>
+          <p style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#9CA3AF;margin-bottom:0.75rem;">Adresse</p>
+          <p style="font-size:0.9rem;color:#4B4B4B;line-height:1.85;">
+            Linzer Straße 21<br>53604 Bad Honnef
+          </p>
+        </div>
+        <div>
+          <p style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#9CA3AF;margin-bottom:0.75rem;">Telefon & Fax</p>
+          <p style="font-size:0.9rem;color:#4B4B4B;line-height:1.85;">
+            T 02224 / 941 306<br>
+            F 02224 / 941 630
+          </p>
+        </div>
+        <div>
+          <p style="font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:#9CA3AF;margin-bottom:0.75rem;">E-Mail</p>
+          <a href="mailto:martin.buenger@t-online.de" style="font-size:0.9rem;color:#4B4B4B;border-bottom:1px solid #E5E5E5;padding-bottom:2px;">
+            martin.buenger@t-online.de
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:1.5rem 6%;border-top:1px solid #E5E5E5;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <p style="font-size:0.7rem;color:#9CA3AF;letter-spacing:0.04em;">© 2026 Architekturbüro Martin Bünger. Alle Rechte vorbehalten.</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="impressum.html" style="font-size:0.7rem;color:#9CA3AF;letter-spacing:0.04em;">Impressum</a>
+      <a href="datenschutz.html" style="font-size:0.7rem;color:#9CA3AF;letter-spacing:0.04em;">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('status') === 'ok') {
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('kontaktForm').style.display = 'none';
+    } else if (params.get('status') === 'fehler') {
+      document.getElementById('error-msg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
