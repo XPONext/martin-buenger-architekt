@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projektliste 1998–2025 | Architekturbüro Martin Bünger</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-192.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #0D0D0D; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAVIGATION ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%; height: 56px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #E5E5E5;
+    }
+    .nav a { text-decoration: none; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #4B4B4B; transition: color 0.2s; }
+    .nav a:hover { color: #0D0D0D; }
+    .nav-logo { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em; color: #0D0D0D !important; }
+    .nav-actions { display: flex; gap: 1.5rem; align-items: center; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 60vh; min-height: 380px; overflow: hidden;
+      margin-top: 56px;
+    }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; filter: saturate(0.7) brightness(0.72); }
+    .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 5% 6% 6%; }
+    .hero-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 1rem; }
+    .hero-title { font-family: 'DM Sans', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 300; line-height: 1.08; color: #fff; }
+
+    /* ── DOWNLOAD-LEISTE ── */
+    .download-bar {
+      background: #F7F7F7; border-bottom: 1px solid #E5E5E5;
+      padding: 1rem 6%; display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.75rem;
+    }
+    .download-info { font-size: 0.76rem; color: #6B6B6B; letter-spacing: 0.02em; }
+    .download-info strong { color: #0D0D0D; }
+    .btn-print {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      border: 1px solid #0D0D0D; padding: 0.6rem 1.4rem;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #0D0D0D; font-family: 'Inter', sans-serif;
+      background: transparent; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-print:hover { background: #0D0D0D; color: #fff; }
+    .btn-print svg { flex-shrink: 0; }
+
+    /* ── INHALT ── */
+    .content { max-width: 900px; margin: 0 auto; padding: 4rem 6% 7rem; }
+
+    .intro {
+      font-size: 0.92rem; line-height: 1.9; color: #4B4B4B;
+      text-align: justify; hyphens: auto;
+      border-bottom: 1px solid #E5E5E5;
+      padding-bottom: 2.5rem; margin-bottom: 3rem;
+    }
+
+    /* ── JAHRES-BLÖCKE ── */
+    .jahr-block {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0 2rem;
+      margin-bottom: 2.2rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .jahr-block:last-child { border-bottom: none; }
+
+    .jahr-label {
+      font-size: 0.66rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #9CA3AF; padding-top: 0.2rem; white-space: nowrap;
+    }
+
+    /* ── PROJEKT-EINTRÄGE ── */
+    .projekt-liste { list-style: none; }
+    .projekt-eintrag {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem;
+      padding: 0.28rem 0;
+      border-bottom: 1px solid #F5F5F5;
+    }
+    .projekt-eintrag:last-child { border-bottom: none; }
+    .projekt-text {
+      font-size: 0.855rem; line-height: 1.7; color: #1a1a1a;
+      text-align: justify; hyphens: auto; flex: 1;
+    }
+    .projekt-text::before { content: '–'; color: #C0C0C0; margin-right: 0.55rem; }
+    .projekt-thumb {
+      flex-shrink: 0; width: 88px; height: 62px;
+      overflow: hidden; align-self: center;
+    }
+    .projekt-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88); }
+
+    /* ── FOOTER ── */
+    .footer-bar {
+      background: #0D0D0D; color: rgba(255,255,255,0.4);
+      padding: 2.5rem 6%; font-size: 0.72rem; letter-spacing: 0.06em;
+      text-align: center; line-height: 1.9;
+    }
+    .footer-bar a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+    /* ── PRINT ── */
+    @media print {
+      .nav, .download-bar, .btn-print { display: none !important; }
+      .hero { height: 35vh; margin-top: 0; }
+      .content { padding: 1.5rem 5%; }
+      .projekt-thumb { width: 70px; height: 50px; }
+      .footer-bar { display: block !important; background: none; color: #666; border-top: 1px solid #ccc; }
+      body { font-size: 11pt; }
+    }
+
+    @media (max-width: 640px) {
+      .jahr-block { grid-template-columns: 1fr; }
+      .jahr-label { padding-bottom: 0.4rem; }
+      .projekt-thumb { width: 70px; height: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Martin Bünger Architekt</a>
+    <div class="nav-actions">
+      <a href="index.html#projekte">← Zurück</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img src="images/projekte/kita-zedernpark/00-Bv Zedernpark 1.jpg" alt="Architekturbüro Martin Bünger – Projektliste">
+    <div class="hero-overlay">
+      <p class="hero-label">Architekturbüro Martin Bünger · Bad Honnef</p>
+      <h1 class="hero-title">Projekte<br>1998–2025</h1>
+    </div>
+  </header>
+
+  <div class="download-bar">
+    <p class="download-info"><strong>28 Jahre Bürogeschichte</strong> · Chronologische Übersicht aller realisierten Projekte</p>
+    <button class="btn-print" onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.056 48.056 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z"/>
+      </svg>
+      Als PDF drucken / speichern
+    </button>
+  </div>
+
+  <main class="content">
+
+    <p class="intro">
+      Seit der Gründung im Jahr 1998 hat das Architekturbüro Martin Bünger eine Vielzahl von Projekten unterschiedlicher Art und Größe in der Region Bonn, dem Rhein-Sieg-Kreis und darüber hinaus realisiert. Die nachfolgende chronologische Übersicht umfasst Einfamilienhäuser, Umbauten im Bestand, Gewerbeprojekte, öffentliche Einrichtungen und Altenpflegeheime.
+    </p>
+
+    <!-- 1998 -->
+    <div class="jahr-block">
+      <span class="jahr-label">1998</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Ausbau eines Dachgeschosses in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 1999 -->
+    <div class="jahr-block">
+      <span class="jahr-label">1999</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Einfamilienhauses in Königswinter</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Neubau eines Wohngebäudes mit Tiefgarage in Bad Honnef</span>
+          <div class="projekt-thumb"><img src="images/projekte/wohngebaeude-tiefgarage/Unknown.jpg" alt="Wohngebäude mit Tiefgarage"></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2000 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2000</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Neubau einer Finca auf Mallorca</span>
+          <div class="projekt-thumb"><img src="images/projekte/finca-mallorca/1-2_2026-06-09_11_16_07.788414.png" alt="Finca auf Mallorca"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Anbauten an ein Einfamilienhaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Einfamilienhauses in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau und Sanierung eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Renovierung eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau und Modernisierung eines Einfamilienhauses in Bonn</span></li>
+      </ul>
+    </div>
+
+    <!-- 2001 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2001</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Wohn- und Bürogebäudes mit Tiefgarage in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Bürogebäudes und Neubau einer Garagenanlage in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Souterraingeschosses zu Wohnzwecken in Königswinter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines LKW-Verkaufsplatzes mit Bürogebäude in Oberhonnefeld</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Instandsetzung eines Mehrfamilienhauses nach Brandschäden in Königswinter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau von zwei Wohnungen eines Mehrfamilienhauses in Bonn (nur Planung)</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Instandsetzung einer Wohnung nach Brandschäden in Köln Porz</span></li>
+      </ul>
+    </div>
+
+    <!-- 2002 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2002</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Einfamilienhauses in Bad Honnef (nur Planung)</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Renovierung eines Einfamilienhauses in Königswinter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Anbau an ein Altenpflegeheim in Aligse-Lehrte</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Anbau an ein Altenpflegeheim in Bad Münstereifel</span>
+          <div class="projekt-thumb"><img src="images/projekte/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749.webp" alt="Altenpflegeheim Bad Münstereifel"></div>
+        </li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Umbau eines Fachwerkhauses in Bad Honnef</span>
+          <div class="projekt-thumb"><img src="images/projekte/fachwerkhaus-umbau-spiessgasse/FWH 1.jpg" alt="Fachwerkhaus Umbau"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Einfamilienhauses in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Zweifamilienhauses in Königswinter</span></li>
+      </ul>
+    </div>
+
+    <!-- 2003 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2003</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Erschließungssteges an einem Mehrfamilienhaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau einer Parkplatzanlage in Siegburg</span></li>
+      </ul>
+    </div>
+
+    <!-- 2004 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2004</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Nebengebäudes zur Büronutzung in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Anbau an ein Einfamilienhaus mit Dachterrasse in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau im Erdgeschoss eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Renovierung eines kirchlichen Wohn- und Verwaltungsgebäudes in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Umgestaltung der Fassade und Umbau eines Gewerbegebäudes in Bonn</span>
+          <div class="projekt-thumb"><img src="images/projekte/gewerbefassade-ottersbach/GG_Bonn_1_2026-06-11_13_46_12.377174.webp" alt="Gewerbegebäude Fassade Bonn"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Um- und Ausbau eines Dachgeschosses in Bonn</span></li>
+      </ul>
+    </div>
+
+    <!-- 2005 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2005</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Neubau eines Mehrfamilienhauses in Bonn</span>
+          <div class="projekt-thumb"><img src="images/projekte/mehrfamilienhaus-tiedke/01-1.jpg" alt="Mehrfamilienhaus Bonn"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Kelleraußenwandsanierung und neue Treppenanlage in Wachtberg Pech</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Renovierung eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau einer Treppenanlage an einem Gewerbegebäude in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Anbau eines Balkons/Terrasse an ein Einfamilienhaus in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2006 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2006</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">An- und Umbau eines Einfamilienhauses in Swisttal Heimerzheim</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Dachgeschosses in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau einer Turnhalle in Bad Honnef</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Neubau einer Fertigturnhalle in Bad Honnef</span>
+          <div class="projekt-thumb"><img src="images/projekte/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873.webp" alt="Fertigturnhalle Bad Honnef"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau einer Souterrainwohnung in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2007 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2007</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Neubau einer Stadtvilla in Bad Honnef</span>
+          <div class="projekt-thumb"><img src="images/projekte/villa-wilhelmstrasse/03-3.jpg" alt="Stadtvilla Bad Honnef"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Einfamilienhauses mit Aufzugeinbau in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau von Büroeinheiten in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Planung für einen Anbau an ein Einfamilienhaus in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Terrasse mit Treppenanlage in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2008 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2008</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau, Kernsanierung und Garagenanbau an eine Stadtvilla in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Anbau an ein Einfamilienhaus in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Grundstückseinfriedung mit Schiebetoranlage in Wachtberg Pech</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Erweiterung des Naturkostladens „Momo" in Bonn Beuel</span>
+          <div class="projekt-thumb"><img src="images/projekte/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679.webp" alt="Naturkostladen Momo Bonn"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Errichtung einer Balkonanlage in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung eines Mehrfamilienhauses in Bonn Oberkassel</span></li>
+      </ul>
+    </div>
+
+    <!-- 2009 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2009</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau einer Stadtvilla in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2010 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2010</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau einer Doppelhaushälfte in Bonn Friesdorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Einfamilienhauses in Bonn Friesdorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umnutzung einer Altenpflegestation zu einem Demenz-Wohnbereich in Bad Soden</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Außenüberdachung eines Zulieferbereiches in Bonn Beuel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau in einem Einfamilienhaus in Wachtberg Pech</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau und Aufstockung eines Einfamilienhauses in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Sanierung und Umgestaltung der Außenanlagen mit neuer Treppenanlage und Freisitz in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Erneuerung und Sanierung eines Balkons an einem Gründerzeithaus in Bonn Oberkassel</span></li>
+      </ul>
+    </div>
+
+    <!-- 2011 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2011</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurf für Umbau und Nutzungsänderung des viergeschossigen Altbaus eines Altenheims in Bad Soden</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Anbau eines überdachten Freisitzes an ein Gründerzeithaus in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für eine Loggia in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau eines Einfamilienhauses in Alfter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung eines Dachgeschossausbaus und einer Gewerbenutzung eines Mehrfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Vorentwurfsplanung für einen Erweiterungsanbau eines Altenpflegeheims in Lehrte</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Planung der Neugestaltung der Außenanlagen eines Einfamilienhauses in Wachtberg Pech</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung einer Windfanganlage eines Naturkostladens in Bonn Beuel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Vorentwurfsplanung für einen Anbau an ein Wohn- und Geschäftshaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurfsplanung für ein Mehrfamilienhaus mit Tiefgarage in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Vorentwurfsplanung für den Neubau eines Kindergartens in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Machbarkeitsstudie für Umbau und Sanierung eines Bäderhauses eines Altenzentrums in Bad Münstereifel</span></li>
+      </ul>
+    </div>
+
+    <!-- 2012 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2012</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Erweiterungsneubau an ein denkmalgeschütztes Fachwerkhaus mit Teilsanierung des Denkmals in Königswinter</span>
+          <div class="projekt-thumb"><img src="images/projekte/fachwerkhaus-erweiterung-koenigswinter/1-2_2026-06-09_11_16_07.788414.png" alt="Fachwerkhaus Erweiterung Königswinter"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurf und Genehmigungsplanung für einen Anbau an ein bestehendes Einfamilienhaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Vorentwurfsplanung und Bauvoranfrage für einen Erweiterungsneubau, An- und Umbau eines Altenpflegeheims in Eitorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Vorentwurfsplanung für die Erweiterung von Aufenthaltsräumen eines Altenpflegeheims in Lehrte</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Anbau, Umbau und Sanierung eines Kindergartens zu einer integrativen Kindertagesstätte in Bad Honnef (Fertigstellung 2014)</span>
+          <div class="projekt-thumb"><img src="images/projekte/kita-zedernpark/00-Bv Zedernpark 1.jpg" alt="Kindertagesstätte Zedernpark Bad Honnef"></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2013 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2013</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurfs- bis Ausführungsplanung Anbau und Umbau eines Einfamilienhauses in Bonn Lengsdorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau einer Arztpraxis in Bonn Bad Godesberg</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für einen Anbau und Modernisierung eines Mehrfamilienhauses in Rheinbreitbach</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Carport und Terrassenüberdachung in Bad Münstereifel, Otterbach</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Konzeptentwicklung für eine Wohnbebauung in Bonn Oberkassel</span></li>
+      </ul>
+    </div>
+
+    <!-- 2014 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2014</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neugestaltung, Sanierung und Instandsetzung der Außen- und Spielbereiche eines Kindergartens in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für Brandschutzmaßnahmen in einem Seniorenzentrum in Bad Münstereifel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für den Umbau eines Dachgeschosses mit neuer Gaupe in Bonn Lessenich</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau und Modernisierung einer Erdgeschosswohnung in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau, Sanierung und Modernisierung eines historischen Wohnhauses (um 1900) in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbaumaßnahme an einer Villa in Bad Honnef</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Anbau an ein bestehendes Einfamilienhaus in Bad Honnef</span>
+          <div class="projekt-thumb"><img src="images/projekte/anbau-firmenich/beia4yyputpmabnekikp.jpeg" alt="Anbau Einfamilienhaus Bad Honnef"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Lagergebäudes für ein Alten- und Pflegeheim in Eitorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau, Sanierung und Neubaumaßnahmen eines Einfamilienhauses in Königswinter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbauplanung (Erdgeschoss) eines Einfamilienhauses in Bonn</span></li>
+      </ul>
+    </div>
+
+    <!-- 2015 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2015</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Dreifamilienhauses in Bonn Beuel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neubau eines Einfamilienhauses in Bonn Kessenich</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Errichtung einer neuen WC-Anlage und Teeküche in einem Bürohaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung einer Grundstückseinfriedung mit zwei Toranlagen in Köln</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für Stellplätze in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Errichtung einer Treppenanlage und Terrasse an einem denkmalgeschützten Gebäude in Bonn</span></li>
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Dachausbau, Umbau und Sanierung eines Einfamilienhauses in Bad Honnef</span>
+          <div class="projekt-thumb"><img src="images/projekte/dachausbau-einfamilienhaus/16-2.jpg" alt="Dachausbau Einfamilienhaus Bad Honnef"></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2016 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2016</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Bauvoranfrage für ein Wohn- und Geschäftshaus in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Errichtung einer Schutzanlage gegen Starkregenfälle in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungs- und Ausführungsplanung für einen Anbau an ein bestehendes Einfamilienhaus mit zwei Apartments</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungs- und Ausführungsplanung zur Umnutzung eines zum Teil denkmalgeschützten Einfamilienhauses zu einem Dreifamilienhaus in Rheinbreitbach</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umnutzung eines Café- und Restaurantbereichs zu einem Aufenthaltsbereich für die Bewohner eines Seniorenheimes in Remagen</span></li>
+      </ul>
+    </div>
+
+    <!-- 2017 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2017</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag">
+          <span class="projekt-text">Modernisierung und Renovierung eines Einfamilienhauses in Bonn</span>
+          <div class="projekt-thumb"><img src="images/projekte/modernisierung-hoefling/Höfling 3.jpg" alt="Modernisierung Einfamilienhaus"></div>
+        </li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung zur Umnutzung von Teilbereichen eines Einfamilienhauses sowie Genehmigungsplanung für Carport und zusätzlichen Stellplatz in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Erweiterung, Umbau und Modernisierung eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungs- und Ausführungsplanung eines Pavillons für ein Alten- und Pflegeheim in Eitorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau und Modernisierung einer Stadtvilla in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2018 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2018</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Projektsteuerung für den Neubau von Produktionshallen mit Büro- und Verwaltungstrakt in Königswinter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Neuplanung und Umbau von Sanitäranlagen in einem Bürohaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für die Umnutzung von Teilbereichen eines dreigeschossigen Gebäudes mit Kapelle und Veranstaltungssaal zu einem Tagespflege- und Verwaltungsbereich, Seniorenzentrum Bad Münstereifel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau Kellergeschoss eines Einfamilienhauses in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbauplanung eines Alten- und Pflegeheimes in Eitorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung Dachgaupen in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau, Renovierung und Modernisierung eines Einfamilienhauses in Wachtberg Pech</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Konzept und Entwurf einer Physiopraxis in Rheinbreitbach</span></li>
+      </ul>
+    </div>
+
+    <!-- 2019 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2019</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Bauvoranfrage für ein Mehrfamilienhaus in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Garagenneubau und Außengeländeplanung einer Stadtvilla in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umnutzung von Teilbereichen eines Büro-/Gewerbe-/Wohngebäudes zu einer Physiopraxis in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Bauleitung für Erweiterung, Umbau und Sanierung eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umbau, Renovierung und Modernisierung eines Einfamilienhauses, Neugestaltung der Außenanlagen in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für einen Außenaufzug an einem Schulgebäude in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2020 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2020</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurf für ein Einfamilienhaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Sanierung und Modernisierung eines Einfamilienhauses in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Dachausbau und Umbau eines Zweifamilienhauses in Alfter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Sanierung der Terrassen, Hausumläufe, einer Außentreppe und der Garagenzufahrtsrampe in Wachtberg Pech</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für drei Appartements in einer denkmalgeschützten Hofanlage in Königswinter sowie Beratung bei der Fachwerksanierung</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für einen Dachumbau mit Errichtung von zwei neuen Gaupen</span></li>
+      </ul>
+    </div>
+
+    <!-- 2021 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2021</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Erneuerung eines Wintergartens in Königswinter</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für einen Schulerweiterungsneubau in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2022 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2022</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Bauvoranfrage für eine Reihenhausbebauung mit fünf Einfamilienhäusern</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für die Erweiterung des 1. OG eines Zweifamilienhauses in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Ausführungsplanung zum Schulerweiterungsneubau in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2023 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2023</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung zur Errichtung einer Fluchttreppe an ein Schulgebäude in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung eines neuen Brandschutzkonzeptes für eine Schule/Internat in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurf für die Umnutzung eines Erdgeschosses eines Zweifamilienhauses</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Grundleitungssanierung der Liegenschaft einer Schule in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2024 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2024</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Ausführung des Schulerweiterungsneubaus in Bad Honnef (bis 2025)</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurfs-, Baugenehmrungs- und Ausführungsplanung einer Garage und eines Gartenhauses in Bergisch Gladbach</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Umsetzung Brandschutzmaßnahmen im Bestand einer Schule in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung eines neuen Brandschutzkonzeptes für ein Wohn- und Geschäftshaus in Bad Honnef</span></li>
+      </ul>
+    </div>
+
+    <!-- 2025 -->
+    <div class="jahr-block">
+      <span class="jahr-label">2025</span>
+      <ul class="projekt-liste">
+        <li class="projekt-eintrag"><span class="projekt-text">Umsetzung Brandschutzmaßnahmen in einem Wohn- und Geschäftshaus in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für einen Umbau mit neuem Brandschutzkonzept eines Pflege- und Altenheims in Eitorf</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Genehmigungsplanung für den Umbau eines Einfamilienhauses in Erpel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Bauvoranfrage für ein Grundstück in Bonn Oberkassel</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Bauvoranfragen für zwei Grundstücke in Bad Honnef</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Entwurfs- und Ausführungsplanung eines Einfamilienhauses in Bonn</span></li>
+        <li class="projekt-eintrag"><span class="projekt-text">Antrag auf Abgeschlossenheitsbescheinigung eines Wohn- und Geschäftshauses in Bonn</span></li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer class="footer-bar">
+    Architekturbüro Martin Bünger &nbsp;·&nbsp; Linzer Straße 21 &nbsp;·&nbsp; 53604 Bad Honnef<br>
+    Tel: 02224 941306 &nbsp;·&nbsp; <a href="mailto:martin.buenger@t-online.de">martin.buenger@t-online.de</a>
+  </footer>
+
+</body>
+</html>
