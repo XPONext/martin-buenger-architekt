@@ -315,4 +315,29 @@
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/haus-unter-denkmalschutz-erkennen.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/fachwerkhaus-sanieren-kosten-mehrkosten.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/daemmung-fachwerkhaus-denkmalschutz.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/foerderung-denkmalgeschuetztes-gebaeude-sanieren.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/steuervorteil-denkmal-afa-sanierung.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>
