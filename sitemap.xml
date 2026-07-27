@@ -340,4 +340,29 @@
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/architektenhonorar-hoai-berechnen.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/wie-viele-leistungsphasen-beauftragen.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/lp1-lp2-lp3-unterschied-hoai.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/dauer-baugenehmigung-nrw.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://martin-buenger-architekt.de/blog/objektueberwachung-lp8-wichtigste-phase.html</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>
