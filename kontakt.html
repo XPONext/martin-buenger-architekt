@@ -91,14 +91,7 @@
     }
     .submit-btn:hover { opacity: 0.75; }
 
-    #success-msg {
-      display: none;
-      padding: 1.25rem 1.5rem;
-      border: 1px solid #E5E5E5;
-      font-size: 0.88rem;
-      color: #4B4B4B;
-      line-height: 1.7;
-    }
+    #success-msg { display: none; }
 
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -136,7 +129,7 @@
   </nav>
 
   <!-- HERO -->
-  <section style="padding:6rem 6% 4rem;">
+  <section id="kontakt-hero" style="padding:6rem 6% 4rem;">
     <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.5rem;">Anfrage</p>
     <h1 style="font-family:'DM Sans',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-0.025em;color:#0D0D0D;max-width:780px;">
       Lassen Sie uns<br>gemeinsam planen.
@@ -187,9 +180,6 @@
           <textarea id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Vorhaben..." required></textarea>
         </div>
 
-        <div id="success-msg" style="padding:1.25rem 1.5rem;border:1px solid #E5E5E5;font-size:0.88rem;color:#4B4B4B;line-height:1.7;display:none;">
-          Vielen Dank für Ihre Nachricht. Wir melden uns in Kürze bei Ihnen.
-        </div>
         <div id="error-msg" style="padding:1.25rem 1.5rem;border:1px solid #E5E5E5;font-size:0.88rem;color:#9CA3AF;line-height:1.7;display:none;">
           Beim Versenden ist etwas schiefgelaufen. Bitte schreiben Sie uns direkt an <a href="mailto:martin.buenger@t-online.de" style="color:#0D0D0D;border-bottom:1px solid #E5E5E5;">martin.buenger@t-online.de</a>.
         </div>
@@ -198,6 +188,21 @@
           <button type="submit" class="submit-btn">Anfrage senden</button>
         </div>
       </form>
+
+      <!-- Fallback-Bestätigung, falls kontakt.html?status=ok direkt aufgerufen wird -->
+      <div id="success-msg" style="display:none;">
+        <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.5rem;">Anfrage gesendet</p>
+        <h2 style="font-family:'DM Sans',sans-serif;font-size:clamp(1.75rem,3.2vw,2.6rem);font-weight:300;line-height:1.15;letter-spacing:-0.02em;color:#0D0D0D;margin-bottom:1.75rem;">
+          Vielen Dank für<br>Ihre Anfrage.
+        </h2>
+        <p style="font-size:1rem;color:#4B4B4B;line-height:1.85;max-width:600px;margin-bottom:1.25rem;">
+          Ihre Nachricht ist bei uns eingegangen. Wir melden uns so schnell wie möglich bei Ihnen – in der Regel innerhalb von ein bis zwei Werktagen.
+        </p>
+        <p style="font-size:0.9rem;color:#9CA3AF;line-height:1.85;max-width:600px;">
+          Falls es eilt, erreichen Sie uns auch direkt telefonisch unter
+          <a href="tel:+492224941306" style="color:#4B4B4B;border-bottom:1px solid #E5E5E5;padding-bottom:2px;">02224 / 941 306</a>.
+        </p>
+      </div>
 
       <!-- KONTAKTDATEN -->
       <div style="display:flex;flex-direction:column;gap:2rem;padding-top:0.5rem;">
@@ -238,8 +243,11 @@
     if (params.get('status') === 'ok') {
       document.getElementById('success-msg').style.display = 'block';
       document.getElementById('kontaktForm').style.display = 'none';
+      document.getElementById('kontakt-hero').style.display = 'none';
     } else if (params.get('status') === 'fehler') {
-      document.getElementById('error-msg').style.display = 'block';
+      const err = document.getElementById('error-msg');
+      err.style.display = 'block';
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   </script>
 

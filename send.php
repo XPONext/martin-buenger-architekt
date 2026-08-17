@@ -29,7 +29,7 @@ $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 if (mail($to, $subject, $body, $headers)) {
-    header('Location: kontakt.html?status=ok');
+    header('Location: danke.html');
 } else {
     header('Location: kontakt.html?status=fehler');
 }
