@@ -23,6 +23,7 @@ Benötigt Pillow (pip3 install Pillow).
 """
 import os
 import sys
+import unicodedata
 from PIL import Image, ImageOps
 
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -71,7 +72,9 @@ def main():
             if not datei.lower().endswith(ENDUNGEN):
                 continue
             quelle = os.path.join(ordner, datei)
-            name = os.path.splitext(datei)[0]
+            # macOS speichert Umlaute teils zerlegt (o + ¨). Server und HTML nutzen die
+            # zusammengesetzte Form, deshalb die Zielnamen einheitlich so schreiben.
+            name = unicodedata.normalize('NFC', os.path.splitext(datei)[0])
             ziele = {b: os.path.join(ZIEL, projekt, f'{name}-{b}.webp') for b in BREITEN}
             offen = [b for b, z in ziele.items() if not aktuell(quelle, z)]
             uebersprungen += len(BREITEN) - len(offen)
