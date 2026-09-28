@@ -470,18 +470,21 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero" style="position:relative;width:100%;aspect-ratio:16/7;overflow:hidden;background:#E8E4DE;min-height:320px;">
-    <!-- Bildwechsel alle 4 s mit leiser Kamerafahrt.
-         Bilder liegen in images/hero/ (16:9, bis 3200 px breit) – Reihenfolge hier = Reihenfolge im Wechsel.
+    <!-- Bildwechsel alle 3 s mit leiser Kamerafahrt.
+         Bilder liegen in images/hero/ (16:9, bis 3200 px breit), Handy-Fassungen in images/web/hero/
+         (erzeugt von _werkzeuge/bilder-optimieren.py). Reihenfolge hier = Reihenfolge im Wechsel.
+         Nur das erste Bild lädt sofort. Die übrigen tragen data-src/data-srcset und werden
+         vom Skript unten erst nachgeladen, wenn die Seite steht.
          Ohne JavaScript steht das erste Bild ruhig da. Aufhellung für die Schrift: .hero::after im CSS. -->
     <div class="hero__bilder">
-      <img src="images/hero/hero-1-kita-zedernpark.webp" width="3200" height="1800" alt="Architekturbüro Martin Bünger, Kindertagesstätte Zedernpark in Bad Honnef" fetchpriority="high">
-      <img src="images/hero/hero-2-finca-mallorca.webp" width="3200" height="1800" alt="Finca auf Mallorca, Neubau von Martin Bünger Architekt" loading="lazy">
-      <img src="images/hero/hero-3-villa-wilhelmstrasse.webp" width="3200" height="1800" alt="Villa Wilhelmstraße in Bad Honnef, Neubau von Martin Bünger Architekt" loading="lazy">
-      <img src="images/hero/hero-4-anbau-einfamilienhaus.webp" width="2048" height="1152" alt="Anbau an ein Einfamilienhaus in Bad Honnef, Wohnraum mit Giebelfenster, Martin Bünger Architekt" loading="lazy">
-      <img src="images/hero/hero-5-einfamilienhaus-bad-honnef.webp" width="2048" height="1152" alt="Einfamilienhaus in Bad Honnef, Neubau von Martin Bünger Architekt" loading="lazy">
-      <img class="ganz" src="images/hero/hero-6-treppenhaus.webp" width="772" height="1152" alt="Einfamilienhaus in Bad Honnef, Treppenhaus mit Holztreppe und Wandleuchten, Martin Bünger Architekt" loading="lazy">
-      <img src="images/hero/hero-7-wohngebaeude-tiefgarage.webp" width="1024" height="576" alt="Wohngebäude mit Tiefgarage in Bad Honnef, Neubau von Martin Bünger Architekt" loading="lazy">
-      <img src="images/hero/hero-8-dachausbau.webp" width="860" height="484" alt="Dachausbau eines Einfamilienhauses, ausgebauter Dachstuhl, Martin Bünger Architekt" loading="lazy">
+      <img src="images/hero/hero-1-kita-zedernpark.webp" srcset="images/web/hero/hero-1-kita-zedernpark-1600.webp 1600w, images/hero/hero-1-kita-zedernpark.webp 3200w" sizes="100vw" width="3200" height="1800" alt="Architekturbüro Martin Bünger, Kindertagesstätte Zedernpark in Bad Honnef" fetchpriority="high">
+      <img data-src="images/hero/hero-2-finca-mallorca.webp" data-srcset="images/web/hero/hero-2-finca-mallorca-1600.webp 1600w, images/hero/hero-2-finca-mallorca.webp 3200w" sizes="100vw" width="3200" height="1800" alt="Finca auf Mallorca, Neubau von Martin Bünger Architekt">
+      <img data-src="images/hero/hero-3-villa-wilhelmstrasse.webp" data-srcset="images/web/hero/hero-3-villa-wilhelmstrasse-1600.webp 1600w, images/hero/hero-3-villa-wilhelmstrasse.webp 3200w" sizes="100vw" width="3200" height="1800" alt="Villa Wilhelmstraße in Bad Honnef, Neubau von Martin Bünger Architekt">
+      <img data-src="images/hero/hero-4-anbau-einfamilienhaus.webp" data-srcset="images/web/hero/hero-4-anbau-einfamilienhaus-1600.webp 1600w, images/hero/hero-4-anbau-einfamilienhaus.webp 2048w" sizes="100vw" width="2048" height="1152" alt="Anbau an ein Einfamilienhaus in Bad Honnef, Wohnraum mit Giebelfenster, Martin Bünger Architekt">
+      <img data-src="images/hero/hero-5-einfamilienhaus-bad-honnef.webp" data-srcset="images/web/hero/hero-5-einfamilienhaus-bad-honnef-1600.webp 1600w, images/hero/hero-5-einfamilienhaus-bad-honnef.webp 2048w" sizes="100vw" width="2048" height="1152" alt="Einfamilienhaus in Bad Honnef, Neubau von Martin Bünger Architekt">
+      <img class="ganz" data-src="images/hero/hero-6-treppenhaus.webp" width="772" height="1152" alt="Einfamilienhaus in Bad Honnef, Treppenhaus mit Holztreppe und Wandleuchten, Martin Bünger Architekt">
+      <img data-src="images/hero/hero-7-wohngebaeude-tiefgarage.webp" width="1024" height="576" alt="Wohngebäude mit Tiefgarage in Bad Honnef, Neubau von Martin Bünger Architekt">
+      <img data-src="images/hero/hero-8-dachausbau.webp" width="860" height="484" alt="Dachausbau eines Einfamilienhauses, ausgebauter Dachstuhl, Martin Bünger Architekt">
     </div>
     <div style="position:absolute;inset:0;display:flex;align-items:flex-end;">
       <div style="padding:3rem 6%;max-width:780px;">
@@ -558,13 +561,15 @@
 
     <!-- Projektkarten stehen fest im HTML, damit Suchmaschinen und KI-Systeme sie
          ohne JavaScript lesen. Hier pflegen: Titel, Ort, Typ, Kategorie (data-cat)
-         und Vorschaubild. Die Galerie-Bilder je Projekt stehen im Skript unter GALERIEN,
+         und Vorschaubild. Das Vorschaubild zeigt auf die WebP-Fassungen in images/web/{id}/
+         (480/960/1440 px, erzeugt von _werkzeuge/bilder-optimieren.py).
+         Die Galerie-Bilder je Projekt stehen im Skript unter GALERIEN,
          zugeordnet über data-id (= Ordner images/projekte/{id}/). -->
     <div class="project-grid" id="projektGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px;">
       <!-- ── NEUBAU ── -->
       <article class="project-card" data-id="villa-wilhelmstrasse" data-cat="neubau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/villa-wilhelmstrasse/03-3.jpg" alt="Villa Wilhelmstraße, Bad Honnef" loading="lazy"
+        <img width="3440" height="2304" src="images/web/villa-wilhelmstrasse/03-3-960.webp" srcset="images/web/villa-wilhelmstrasse/03-3-480.webp 480w, images/web/villa-wilhelmstrasse/03-3-960.webp 960w, images/web/villa-wilhelmstrasse/03-3-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Villa Wilhelmstraße, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -576,7 +581,7 @@
       </article>
       <article class="project-card" data-id="mehrfamilienhaus-tiedke" data-cat="neubau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#D5D0C8;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/mehrfamilienhaus-tiedke/03-3.jpg" alt="Mehrfamilienhaus, Bonn" loading="lazy"
+        <img width="3440" height="2304" src="images/web/mehrfamilienhaus-tiedke/03-3-960.webp" srcset="images/web/mehrfamilienhaus-tiedke/03-3-480.webp 480w, images/web/mehrfamilienhaus-tiedke/03-3-960.webp 960w, images/web/mehrfamilienhaus-tiedke/03-3-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Mehrfamilienhaus, Bonn" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -588,7 +593,7 @@
       </article>
       <article class="project-card" data-id="einfamilienhaus-koecke" data-cat="neubau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#EAE8E4;cursor:pointer;">
-        <img width="2048" height="1372" src="images/projekte/einfamilienhaus-koecke/Köcke 1.jpeg" alt="Einfamilienhaus Bad Honnef, Bad Honnef" loading="lazy"
+        <img width="2048" height="1372" src="images/web/einfamilienhaus-koecke/K%C3%B6cke%201-960.webp" srcset="images/web/einfamilienhaus-koecke/K%C3%B6cke%201-480.webp 480w, images/web/einfamilienhaus-koecke/K%C3%B6cke%201-960.webp 960w, images/web/einfamilienhaus-koecke/K%C3%B6cke%201-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Einfamilienhaus Bad Honnef, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -600,7 +605,7 @@
       </article>
       <article class="project-card" data-id="wohngebaeude-tiefgarage" data-cat="neubau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDDAD4;cursor:pointer;">
-        <img width="1024" height="686" src="images/projekte/wohngebaeude-tiefgarage/Unknown.jpg" alt="Wohngebäude mit Tiefgarage, Bad Honnef" loading="lazy"
+        <img width="1024" height="686" src="images/web/wohngebaeude-tiefgarage/Unknown-960.webp" srcset="images/web/wohngebaeude-tiefgarage/Unknown-480.webp 480w, images/web/wohngebaeude-tiefgarage/Unknown-960.webp 960w, images/web/wohngebaeude-tiefgarage/Unknown-1440.webp 1024w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Wohngebäude mit Tiefgarage, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -612,7 +617,7 @@
       </article>
       <article class="project-card" data-id="finca-mallorca" data-cat="neubau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#C8C3BA;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/finca-mallorca/1-2_2026-06-09_11_16_07.788414.png" alt="Finca, Mallorca" loading="lazy"
+        <img width="3440" height="2304" src="images/web/finca-mallorca/1-2_2026-06-09_11_16_07.788414-960.webp" srcset="images/web/finca-mallorca/1-2_2026-06-09_11_16_07.788414-480.webp 480w, images/web/finca-mallorca/1-2_2026-06-09_11_16_07.788414-960.webp 960w, images/web/finca-mallorca/1-2_2026-06-09_11_16_07.788414-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Finca, Mallorca" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -624,7 +629,7 @@
       </article>
       <article class="project-card" data-id="wohn-buerogebaeude-tiefgarage" data-cat="neubau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E0DDD7;cursor:pointer;">
-        <img width="2048" height="3056" src="images/projekte/wohn-buerogebaeude-tiefgarage/TG 1.jpeg" alt="Wohn- &amp; Bürogebäude mit Tiefgarage" loading="lazy"
+        <img width="2048" height="3056" src="images/web/wohn-buerogebaeude-tiefgarage/TG%201-960.webp" srcset="images/web/wohn-buerogebaeude-tiefgarage/TG%201-480.webp 480w, images/web/wohn-buerogebaeude-tiefgarage/TG%201-960.webp 960w, images/web/wohn-buerogebaeude-tiefgarage/TG%201-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Wohn- &amp; Bürogebäude mit Tiefgarage" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -638,7 +643,7 @@
       <!-- ── UMBAU ── -->
       <article class="project-card" data-id="dachausbau-einfamilienhaus" data-cat="umbau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#EAE8E4;cursor:pointer;">
-        <img width="860" height="576" src="images/projekte/dachausbau-einfamilienhaus/42.jpg" alt="Dachausbau Einfamilienhaus" loading="lazy"
+        <img width="860" height="576" src="images/web/dachausbau-einfamilienhaus/42-960.webp" srcset="images/web/dachausbau-einfamilienhaus/42-480.webp 480w, images/web/dachausbau-einfamilienhaus/42-960.webp 860w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Dachausbau Einfamilienhaus" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -650,7 +655,7 @@
       </article>
       <article class="project-card" data-id="fachwerkhaus-erweiterung-koenigswinter" data-cat="umbau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#D5D0C8;cursor:pointer;">
-        <img width="1533" height="1026" src="images/projekte/fachwerkhaus-erweiterung-koenigswinter/8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f.png" alt="Fachwerkhaus-Erweiterung, Königswinter" loading="lazy"
+        <img width="1533" height="1026" src="images/web/fachwerkhaus-erweiterung-koenigswinter/8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f-960.webp" srcset="images/web/fachwerkhaus-erweiterung-koenigswinter/8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f-480.webp 480w, images/web/fachwerkhaus-erweiterung-koenigswinter/8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f-960.webp 960w, images/web/fachwerkhaus-erweiterung-koenigswinter/8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Fachwerkhaus-Erweiterung, Königswinter" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -662,7 +667,7 @@
       </article>
       <article class="project-card" data-id="anbau-firmenich" data-cat="umbau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
-        <img width="2048" height="3056" src="images/projekte/anbau-firmenich/odmzsj7s3zqxotyk77o6.jpeg" alt="Anbau Einfamilienhaus, Bad Honnef" loading="lazy"
+        <img width="2048" height="3056" src="images/web/anbau-firmenich/odmzsj7s3zqxotyk77o6-960.webp" srcset="images/web/anbau-firmenich/odmzsj7s3zqxotyk77o6-480.webp 480w, images/web/anbau-firmenich/odmzsj7s3zqxotyk77o6-960.webp 960w, images/web/anbau-firmenich/odmzsj7s3zqxotyk77o6-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Anbau Einfamilienhaus, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -674,7 +679,7 @@
       </article>
       <article class="project-card" data-id="fachwerkhaus-umbau-spiessgasse" data-cat="umbau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDDAD4;cursor:pointer;">
-        <img width="1720" height="1152" src="images/projekte/fachwerkhaus-umbau-spiessgasse/FWH 1.jpg" alt="Fachwerkhaus-Umbau Spießgasse, Bad Honnef" loading="lazy"
+        <img width="1720" height="1152" src="images/web/fachwerkhaus-umbau-spiessgasse/FWH%201-960.webp" srcset="images/web/fachwerkhaus-umbau-spiessgasse/FWH%201-480.webp 480w, images/web/fachwerkhaus-umbau-spiessgasse/FWH%201-960.webp 960w, images/web/fachwerkhaus-umbau-spiessgasse/FWH%201-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Fachwerkhaus-Umbau Spießgasse, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -686,7 +691,7 @@
       </article>
       <article class="project-card" data-id="modernisierung-hoefling" data-cat="umbau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#C8C3BA;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/modernisierung-hoefling/ho_fling_1_2026-06-11_14_00_52.207468.webp" alt="Modernisierung Einfamilienhaus" loading="lazy"
+        <img width="3440" height="2304" src="images/web/modernisierung-hoefling/ho_fling_1_2026-06-11_14_00_52.207468-960.webp" srcset="images/web/modernisierung-hoefling/ho_fling_1_2026-06-11_14_00_52.207468-480.webp 480w, images/web/modernisierung-hoefling/ho_fling_1_2026-06-11_14_00_52.207468-960.webp 960w, images/web/modernisierung-hoefling/ho_fling_1_2026-06-11_14_00_52.207468-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Modernisierung Einfamilienhaus" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -698,7 +703,7 @@
       </article>
       <article class="project-card" data-id="terrasse-oberkassel" data-cat="umbau"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
-        <img width="2400" height="1800" src="images/projekte/terrasse-oberkassel/terrasse-1.jpg" alt="Terrasse, Bonn-Oberkassel" loading="lazy"
+        <img width="2400" height="1800" src="images/web/terrasse-oberkassel/terrasse-1-960.webp" srcset="images/web/terrasse-oberkassel/terrasse-1-480.webp 480w, images/web/terrasse-oberkassel/terrasse-1-960.webp 960w, images/web/terrasse-oberkassel/terrasse-1-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Terrasse, Bonn-Oberkassel" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -712,7 +717,7 @@
       <!-- ── GEWERBE ── -->
       <article class="project-card" data-id="kita-zedernpark" data-cat="gewerbe"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#EAE8E4;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/kita-zedernpark/00-Bv Zedernpark 1.jpg" alt="Kindertagesstätte Zedernpark, Bad Honnef" loading="lazy"
+        <img width="3440" height="2304" src="images/web/kita-zedernpark/00-Bv%20Zedernpark%201-960.webp" srcset="images/web/kita-zedernpark/00-Bv%20Zedernpark%201-480.webp 480w, images/web/kita-zedernpark/00-Bv%20Zedernpark%201-960.webp 960w, images/web/kita-zedernpark/00-Bv%20Zedernpark%201-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Kindertagesstätte Zedernpark, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -724,7 +729,7 @@
       </article>
       <article class="project-card" data-id="gewerbefassade-ottersbach" data-cat="gewerbe"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#D5D0C8;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/gewerbefassade-ottersbach/GG_Bonn_3_2026-06-11_13_46_12.770783.webp" alt="Gewerbefassade Ottersbach, Bonn" loading="lazy"
+        <img width="3440" height="2304" src="images/web/gewerbefassade-ottersbach/GG_Bonn_3_2026-06-11_13_46_12.770783-960.webp" srcset="images/web/gewerbefassade-ottersbach/GG_Bonn_3_2026-06-11_13_46_12.770783-480.webp 480w, images/web/gewerbefassade-ottersbach/GG_Bonn_3_2026-06-11_13_46_12.770783-960.webp 960w, images/web/gewerbefassade-ottersbach/GG_Bonn_3_2026-06-11_13_46_12.770783-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Gewerbefassade Ottersbach, Bonn" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -736,7 +741,7 @@
       </article>
       <article class="project-card" data-id="altenpflegeheim-bad-muenstereifel" data-cat="gewerbe"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDDAD4;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749.webp" alt="Altenpflegeheim Um- &amp; Anbau, Bad Münstereifel" loading="lazy"
+        <img width="3440" height="2304" src="images/web/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749-960.webp" srcset="images/web/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749-480.webp 480w, images/web/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749-960.webp 960w, images/web/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Altenpflegeheim Um- &amp; Anbau, Bad Münstereifel" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -748,7 +753,7 @@
       </article>
       <article class="project-card" data-id="biogeschaeft-momo" data-cat="gewerbe"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
-        <img width="1544" height="2304" src="images/projekte/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679.webp" alt="Biogeschäft-Erweiterung Momo, Bonn-Beuel" loading="lazy"
+        <img width="1544" height="2304" src="images/web/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679-960.webp" srcset="images/web/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679-480.webp 480w, images/web/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679-960.webp 960w, images/web/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Biogeschäft-Erweiterung Momo, Bonn-Beuel" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -760,7 +765,7 @@
       </article>
       <article class="project-card" data-id="fertigturnhalle-hager-hof" data-cat="gewerbe"
                style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#C8C3BA;cursor:pointer;">
-        <img width="3440" height="2304" src="images/projekte/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873.webp" alt="Fertigturnhalle Hager Hof, Bad Honnef" loading="lazy"
+        <img width="3440" height="2304" src="images/web/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873-960.webp" srcset="images/web/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873-480.webp 480w, images/web/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873-960.webp 960w, images/web/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873-1440.webp 1440w" sizes="(max-width: 768px) 88vw, (max-width: 1233px) 44vw, (max-width: 1645px) 29vw, 22vw" alt="Fertigturnhalle Hager Hof, Bad Honnef" loading="lazy"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
              onerror="this.style.display='none'">
         <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
@@ -969,7 +974,12 @@
      Projekt mit Vorher/Nachher-Umschalter: statt einer Liste ein Objekt
      mit den Listen vorher und nachher angeben.
 
-     Neues Projekt: Karte im HTML kopieren und anpassen, Bilderliste hier ergänzen.
+     Geladen werden nicht die Originale, sondern verkleinerte WebP-Fassungen
+     aus images/web/{id}/. Die erzeugt _werkzeuge/bilder-optimieren.py.
+
+     Neues Projekt: Originale nach images/projekte/{id}/ legen, das Werkzeug
+     ausführen, Karte im HTML kopieren und anpassen (Pfade auf images/web/),
+     Bilderliste hier ergänzen.
   ═══════════════════════════════════════════════════════════════════════ */
   const GALERIEN = {
     'villa-wilhelmstrasse': [
@@ -1147,6 +1157,11 @@
   let lbBildIdx = 0;
   let lbModus   = 'nachher';
 
+  // GALERIEN nennt die Originale, geladen wird die WebP-Fassung aus images/web/
+  function ohneEndung(datei) {
+    return datei.replace(/\.[^.]+$/, '');
+  }
+
   // Vorher/Nachher-Projekte haben statt einer Liste ein Objekt mit zwei Listen
   function lbVorherNachher() {
     return !Array.isArray(GALERIEN[lbKarte.dataset.id]);
@@ -1174,8 +1189,9 @@
     toggle.style.display = lbVorherNachher() ? 'flex' : 'none';
     if (lbVorherNachher()) lbSetModus('nachher');
     // Galerie beim Vorschaubild der Karte beginnen
-    const cover = karte.querySelector('img').getAttribute('src').split('/').pop();
-    lbBildIdx = lbBilderAktuell().indexOf(cover);
+    const cover = decodeURIComponent(karte.querySelector('img').getAttribute('src').split('/').pop())
+      .replace(/-\d+\.webp$/, '');
+    lbBildIdx = lbBilderAktuell().findIndex(datei => ohneEndung(datei) === cover);
     if (lbBildIdx < 0) lbBildIdx = 0;
     document.getElementById('lightbox').style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -1200,7 +1216,7 @@
     const name   = lbKarte.querySelector('img').alt;   // "Titel, Ort"
     img.style.opacity = '0';
     setTimeout(() => {
-      img.src = `images/projekte/${lbKarte.dataset.id}/${bilder[lbBildIdx]}`;
+      img.src = `images/web/${lbKarte.dataset.id}/${encodeURIComponent(ohneEndung(bilder[lbBildIdx]))}-2400.webp`;
       img.alt = `${name}, Bild ${lbBildIdx + 1} von ${bilder.length}`;
       img.style.opacity = '1';
     }, 150);
@@ -1246,6 +1262,16 @@
                               // Alle weiteren blenden ruhig in 1,2 s (siehe CSS).
     var i = 0, rein = true;
 
+    // Folgebilder tragen data-src/data-srcset und werden erst hier geladen,
+    // damit das erste Bild und der Rest der Seite die Leitung für sich haben.
+    function laden(bild) {
+      if (bild.dataset.srcset) { bild.srcset = bild.dataset.srcset; bild.removeAttribute('data-srcset'); }
+      if (bild.dataset.src)    { bild.src = bild.dataset.src;       bild.removeAttribute('data-src'); }
+    }
+    function bereit(bild) {
+      return !bild.dataset.src && bild.complete;
+    }
+
     // Die Fahrt dauert immer genau so lange wie das Bild steht. Nur dann ist sie
     // beim Wechsel am Endwert und das nächste Bild setzt bündig an – sonst ruckt es.
     function zeigen(bild, dauer) {
@@ -1257,6 +1283,13 @@
 
     function weiter(schnell) {
       var alt = bilder[i], j = (i + 1) % bilder.length, neu = bilder[j];
+      // Ist das nächste Bild noch nicht da, bleibt das aktuelle stehen. Seine Fahrt
+      // hält per forwards den Endwert, der Anschluss bleibt also bündig.
+      if (!bereit(neu)) {
+        laden(neu);
+        setTimeout(function () { weiter(schnell); }, 200);
+        return;
+      }
       // Blendedauer festlegen, bevor die Klassen wechseln – sonst greift sie nicht
       alt.style.transitionDuration = neu.style.transitionDuration =
         schnell ? BLENDE_ERST + 'ms' : '';
@@ -1266,13 +1299,13 @@
       i = j;
       rein = !rein;                          // Richtung wechselt bei jedem Bild
       zeigen(neu, TAKT);
+      laden(bilder[(j + 1) % bilder.length]); // das übernächste schon vorladen
+      setTimeout(function () { weiter(false); }, TAKT);
     }
 
     zeigen(bilder[0], ERSTER);
-    setTimeout(function () {
-      weiter(true);                          // der Auftakt: früher und kürzer
-      setInterval(function () { weiter(false); }, TAKT);
-    }, ERSTER);
+    window.addEventListener('load', function () { laden(bilder[1]); });
+    setTimeout(function () { weiter(true); }, ERSTER);   // der Auftakt: früher und kürzer
   }
   </script>
 

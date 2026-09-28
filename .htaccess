@@ -1,0 +1,25 @@
+# ── Ladezeit: Komprimierung und Zwischenspeichern ─────────────────────────
+# Alle Regeln stehen in IfModule-Blöcken. Fehlt ein Modul auf dem Server,
+# wird der Block übersprungen, statt die Seite mit einem Fehler lahmzulegen.
+
+# Texte komprimiert ausliefern (HTML, CSS, JavaScript, XML, Text)
+<IfModule mod_deflate.c>
+  <IfModule mod_filter.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml
+  </IfModule>
+</IfModule>
+
+# Browser dürfen Bilder 30 Tage zwischenspeichern. HTML wird bei jedem Aufruf
+# kurz beim Server nachgefragt, damit Änderungen an den Seiten sofort sichtbar sind.
+# Wird ein Bild unter gleichem Namen ersetzt, sehen wiederkehrende Besucher
+# es erst nach Ablauf der Frist. Neue Bilder deshalb unter neuem Namen hochladen.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType application/pdf "access plus 7 days"
+</IfModule>
