@@ -29,23 +29,59 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Martin Bünger Architekt",
-    "description": "Architekturbüro mit Sitz in Bad Honnef, tätig in Siegburg: Kaufberatung, Umbau und Modernisierung im Bestand, Planung nach HOAI, Bauleitung.",
-    "url": "https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html",
-    "telephone": "+49-2224-941306",
-    "email": "martin.buenger@t-online.de",
-    "foundingDate": "1998",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Linzer Straße 21",
-      "postalCode": "53604",
-      "addressLocality": "Bad Honnef",
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    },
-    "areaServed": "Siegburg",
-    "priceRange": "€€"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html",
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html",
+        "name": "Umbau & Modernisierung in Siegburg | Martin Bünger",
+        "description": "Umbau und Modernisierung von Bestandsgebäuden in Siegburg: energetische Sanierung, Grundrissveränderungen, Erweiterungen.",
+        "inLanguage": "de-DE",
+        "isPartOf": {
+          "@id": "https://martin-buenger-architekt.de/#website"
+        },
+        "about": {
+          "@id": "https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html#leistung"
+        },
+        "dateModified": "2026-07-27",
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "Projektliste 1998–2025",
+            "url": "https://martin-buenger-architekt.de/projektliste.html",
+            "author": {
+              "@id": "https://martin-buenger-architekt.de/#buero"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html#leistung",
+        "name": "Umbau und Modernisierung in Siegburg",
+        "serviceType": "Umbau und Modernisierung im Bestand",
+        "provider": {
+          "@type": "ProfessionalService",
+          "@id": "https://martin-buenger-architekt.de/#buero",
+          "name": "Martin Bünger Architekt",
+          "url": "https://martin-buenger-architekt.de/",
+          "telephone": "+49-2224-941306",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Linzer Straße 21",
+            "postalCode": "53604",
+            "addressLocality": "Bad Honnef",
+            "addressRegion": "Nordrhein-Westfalen",
+            "addressCountry": "DE"
+          }
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Siegburg"
+        },
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html"
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -120,7 +156,7 @@
   <!-- NAV -->
   <nav style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 6%;position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #E5E5E5;z-index:100;">
     <a href="../../index.html" style="display:flex;align-items:center;gap:0.6rem;">
-      <img src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
+      <img width="600" height="600" src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
       <span style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#0D0D0D;">Martin Bünger Architekt</span>
     </a>
     <div class="nav-links" style="display:flex;gap:2.5rem;align-items:center;">
@@ -151,16 +187,14 @@
   <section style="padding:1rem 6% 6rem;">
     <div style="max-width:760px;">
       <p style="font-size:1.05rem;font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;color:#0D0D0D;margin-bottom:2rem;">
-        2003 haben wir in Siegburg den Neubau einer Parkplatzanlage realisiert – seither begleiten wir auf Anfrage auch Umbau und Modernisierung von Bestandsgebäuden in der Stadt.
+        2003 haben wir in Siegburg den Neubau einer Parkplatzanlage realisiert. Seither begleiten wir auf Anfrage auch Umbau und Modernisierung von Bestandsgebäuden in der Stadt.
       </p>
       <div style="font-size:0.92rem;color:#4B4B4B;line-height:1.8;display:flex;flex-direction:column;gap:1.2rem;">
         <p>Energetische Sanierung, Grundrissveränderung oder Erweiterung: Für alle drei Varianten lässt sich die BAFA-Förderung für Einzelmaßnahmen einplanen, 15 % Zuschuss auf die förderfähigen Kosten, mit individuellem Sanierungsfahrplan bis 20 %.</p>
         <p>Wir rechnen diesen Zuschuss direkt in die erste Kostenschätzung mit ein, statt ihn erst nachträglich zu erwähnen.</p>
         <p>Mehr zur Leistung im Allgemeinen: <a href="../../leistungen/umbau-modernisierung.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Umbau und Modernisierung</a>. Vertiefend dazu unser Beitrag <a href="../../blog/foerdermittel-sanierung-bestandsimmobilie.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Fördermittel für die Sanierung einer Bestandsimmobilie</a>. Mehr zum Standort insgesamt: <a href="../siegburg.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Siegburg-Übersicht</a>.</p>
       </div>
-      <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E5E5;">
-        Quelle: Projektliste 1998–2025, Architekturbüro Martin Bünger
-      </p>
+      <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E5E5;">Stand: 27. Juli 2026</p>
     </div>
   </section>
 

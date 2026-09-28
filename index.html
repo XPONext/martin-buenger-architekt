@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Martin Bünger Architekt – Kaufberatung, Planung & Umbau in Bad Honnef</title>
+  <title>Martin Bünger Architekt Bad Honnef | Kaufberatung & Planung</title>
   <meta name="description" content="Architekturbüro in Bad Honnef für Kaufberatung, Planung nach HOAI sowie Umbau und Modernisierung von Bestandsgebäuden in Bonn und dem Rhein-Sieg-Kreis.">
   <link rel="canonical" href="https://martin-buenger-architekt.de/">
 
@@ -12,13 +12,13 @@
   <meta property="og:site_name" content="Martin Bünger Architekt">
   <meta property="og:locale" content="de_DE">
   <meta property="og:url" content="https://martin-buenger-architekt.de/">
-  <meta property="og:title" content="Martin Bünger Architekt – Kaufberatung, Planung & Umbau in Bad Honnef">
+  <meta property="og:title" content="Martin Bünger Architekt Bad Honnef | Kaufberatung & Planung">
   <meta property="og:description" content="Architekturbüro in Bad Honnef für Kaufberatung, Planung nach HOAI sowie Umbau und Modernisierung von Bestandsgebäuden in Bonn und dem Rhein-Sieg-Kreis.">
   <meta property="og:image" content="https://martin-buenger-architekt.de/images/projekte/kita-zedernpark/00-Bv%20Zedernpark%201.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Martin Bünger Architekt – Kaufberatung, Planung & Umbau in Bad Honnef">
+  <meta name="twitter:title" content="Martin Bünger Architekt Bad Honnef | Kaufberatung & Planung">
   <meta name="twitter:description" content="Architekturbüro in Bad Honnef für Kaufberatung, Planung nach HOAI sowie Umbau und Modernisierung von Bestandsgebäuden in Bonn und dem Rhein-Sieg-Kreis.">
   <meta name="twitter:image" content="https://martin-buenger-architekt.de/images/projekte/kita-zedernpark/00-Bv%20Zedernpark%201.jpg">
 
@@ -114,43 +114,274 @@
     #lbNext:hover { background: linear-gradient(to left, rgba(0,0,0,0.55) 0%, transparent 100%); }
     #lbPrev:hover .lb-chevron, #lbNext:hover .lb-chevron { opacity: 0.95; }
     .lb-chevron { opacity: 0.38; transition: opacity 0.3s; }
+    /* ── Hero: Bildwechsel mit leiser Kamerafahrt ──────────────────
+       Takt 3 s, Überblendung 1,2 s, Fahrt 1,8 % Zoom.
+
+       Die Fahrt läuft abwechselnd hinein und heraus. Damit beginnt das
+       einblendende Bild genau bei der Größe, bei der das ausblendende
+       steht – während der Überblendung liegen beide deckungsgleich
+       übereinander, es gibt keinen Größensprung. Deshalb ist die
+       Fahrtdauer gleich dem Takt: Nach 3 s ist die Fahrt am Endwert
+       angekommen, genau wenn das nächste Bild dort ansetzt.
+       Bewegung linear, damit sie nirgends beschleunigt.
+
+       Ruhiger wird die Fahrt über die Amplitude, nicht über die Dauer:
+       Die Dauer muss beim Takt bleiben, sonst sitzt die Naht nicht mehr
+       bündig. Der Zoomwert steht an drei Stellen (Ruhezustand, rein "to",
+       raus "from") – alle drei müssen denselben Wert haben.          */
+    .hero { isolation: isolate; }
+
+    .hero__bilder { position: absolute; inset: 0; z-index: -2; }
+
+    .hero__bilder img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      /* Fotos gedämpft: Sättigung reduziert, leicht aufgehellt */
+      filter: saturate(0.7) brightness(1.08);
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      transform: scale(1.018);
+    }
+    /* Ohne JavaScript steht das erste Bild */
+    .hero__bilder img:first-child { opacity: 1; }
+    .hero__bilder img.sichtbar { opacity: 1; }
+
+    /* Die Fahrt hängt an der Richtungsklasse, nicht an .sichtbar:
+       beim Ausblenden bleibt sie am Bild stehen und hält per forwards
+       ihren Endwert. Sonst springt das Bild mitten in der Blende. */
+    .hero__bilder img.rein { animation: fahrt-rein 3s linear forwards; }
+    .hero__bilder img.raus { animation: fahrt-raus 3s linear forwards; }
+    @keyframes fahrt-rein {
+      from { transform: scale(1); }
+      to   { transform: scale(1.018); }
+    }
+    @keyframes fahrt-raus {
+      from { transform: scale(1.018); }
+      to   { transform: scale(1); }
+    }
+
+    /* Hochkantes Motiv: ganz zeigen statt anschneiden. Die Flächen daneben
+       füllt eine unscharfe Fassung desselben Fotos, die als Hintergrund im
+       Bild selbst liegt – deshalb bleibt es ein einziges <img> und der
+       Bildwechsel zählt es wie jedes andere Motiv. */
+    .hero__bilder img.ganz {
+      object-fit: contain;
+      background-image: url('images/hero/hero-6-treppenhaus-unscharf.webp');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Aufhellung, damit die dunkle Schrift auf jedem Motiv trägt.
+       Liegt über den Bildern (-2) und unter dem Textblock. */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to top,
+        rgba(255,255,255,0.88) 0%,
+        rgba(255,255,255,0.66) 30%,
+        rgba(255,255,255,0.12) 62%,
+        transparent 100%);
+    }
+
+    /* Bei reduzierter Bewegung: kein Wechsel, keine Fahrt */
+    @media (prefers-reduced-motion: reduce) {
+      .hero__bilder img { transition: none; animation: none; }
+    }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Martin Bünger Architekt",
-    "description": "Architekturbüro in Bad Honnef für Kaufberatung beim Immobilienkauf, Planung nach HOAI sowie Umbau und Modernisierung von Bestandsgebäuden.",
-    "url": "https://martin-buenger-architekt.de",
-    "telephone": "+49-2224-941306",
-    "email": "martin.buenger@t-online.de",
-    "foundingDate": "1998",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Linzer Straße 21",
-      "postalCode": "53604",
-      "addressLocality": "Bad Honnef",
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 50.6447,
-      "longitude": 7.2283
-    },
-    "areaServed": [
-      "Bad Honnef", "Bonn", "Siebengebirge", "Rhein-Sieg-Kreis", "Königswinter"
-    ],
-    "serviceType": [
-      "Kaufberatung Immobilien",
-      "Architekturplanung HOAI Leistungsphasen 1-9",
-      "Umbau und Modernisierung",
-      "Abgeschlossenheitsbescheinigung",
-      "Bauvoranfrage"
-    ],
-    "priceRange": "€€",
-    "image": "https://martin-buenger-architekt.de/images/logo-mb.png",
-    "sameAs": []
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://martin-buenger-architekt.de/#buero",
+        "name": "Martin Bünger Architekt",
+        "alternateName": "Architekturbüro Martin Bünger",
+        "description": "Architekturbüro in Bad Honnef für Kaufberatung beim Immobilienkauf, Planung nach HOAI, Bauleitung sowie Umbau und Modernisierung von Bestandsgebäuden.",
+        "url": "https://martin-buenger-architekt.de/",
+        "logo": "https://martin-buenger-architekt.de/images/logo-mb.png",
+        "image": "https://martin-buenger-architekt.de/images/projekte/kita-zedernpark/00-Bv%20Zedernpark%201.jpg",
+        "telephone": "+49-2224-941306",
+        "email": "martin.buenger@t-online.de",
+        "foundingDate": "1998",
+        "founder": {
+          "@id": "https://martin-buenger-architekt.de/#martin-buenger"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Linzer Straße 21",
+          "postalCode": "53604",
+          "addressLocality": "Bad Honnef",
+          "addressRegion": "Nordrhein-Westfalen",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 50.6447,
+          "longitude": 7.2283
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Bad Honnef"
+          },
+          {
+            "@type": "City",
+            "name": "Bonn"
+          },
+          {
+            "@type": "City",
+            "name": "Königswinter"
+          },
+          {
+            "@type": "City",
+            "name": "Sankt Augustin"
+          },
+          {
+            "@type": "City",
+            "name": "Siegburg"
+          },
+          {
+            "@type": "City",
+            "name": "Troisdorf"
+          },
+          {
+            "@type": "City",
+            "name": "Niederkassel"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Rhein-Sieg-Kreis"
+          },
+          {
+            "@type": "Place",
+            "name": "Siebengebirge"
+          }
+        ],
+        "serviceType": [
+          "Kaufberatung Immobilien",
+          "Architekturplanung HOAI Leistungsphasen 1-9",
+          "Umbau und Modernisierung",
+          "Bauleitung und Objektüberwachung",
+          "Abgeschlossenheitsbescheinigung",
+          "Bauvoranfrage"
+        ],
+        "knowsAbout": [
+          "Kaufberatung bei Bestandsimmobilien",
+          "Umbau und Modernisierung im Bestand",
+          "Energetische Sanierung",
+          "Denkmalschutz und Fachwerkhäuser",
+          "Leistungsphasen nach HOAI",
+          "Bauleitung und Objektüberwachung",
+          "Abgeschlossenheitsbescheinigung",
+          "Bauvoranfrage"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Leistungen",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Kaufberatung beim Immobilienkauf",
+                "@id": "https://martin-buenger-architekt.de/leistungen/kaufberatung.html#leistung",
+                "url": "https://martin-buenger-architekt.de/leistungen/kaufberatung.html"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Architektenleistungen nach HOAI, Leistungsphasen 1-9",
+                "@id": "https://martin-buenger-architekt.de/leistungen/leistungsphasen.html#leistung",
+                "url": "https://martin-buenger-architekt.de/leistungen/leistungsphasen.html"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Umbau und Modernisierung im Bestand",
+                "@id": "https://martin-buenger-architekt.de/leistungen/umbau-modernisierung.html#leistung",
+                "url": "https://martin-buenger-architekt.de/leistungen/umbau-modernisierung.html"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Bauleitung und Objektüberwachung",
+                "@id": "https://martin-buenger-architekt.de/leistungen/bauleitung.html#leistung",
+                "url": "https://martin-buenger-architekt.de/leistungen/bauleitung.html"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Abgeschlossenheitsbescheinigung und Bauvoranfrage",
+                "@id": "https://martin-buenger-architekt.de/leistungen/antraege.html#leistung",
+                "url": "https://martin-buenger-architekt.de/leistungen/antraege.html"
+              }
+            }
+          ]
+        },
+        "priceRange": "€€"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://martin-buenger-architekt.de/#martin-buenger",
+        "name": "Martin Bünger",
+        "jobTitle": "Architekt",
+        "url": "https://martin-buenger-architekt.de/#buero",
+        "worksFor": {
+          "@id": "https://martin-buenger-architekt.de/#buero"
+        },
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Architektenkammer Nordrhein-Westfalen",
+          "url": "https://www.aknw.de"
+        },
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Berufsbezeichnung",
+          "name": "Architekt, Architektenkammer NRW, Mitgliedsnr. A 27058",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Architektenkammer Nordrhein-Westfalen",
+            "url": "https://www.aknw.de"
+          }
+        },
+        "knowsAbout": [
+          "Kaufberatung bei Bestandsimmobilien",
+          "Umbau und Modernisierung im Bestand",
+          "Energetische Sanierung",
+          "Denkmalschutz und Fachwerkhäuser",
+          "Leistungsphasen nach HOAI",
+          "Bauleitung und Objektüberwachung",
+          "Abgeschlossenheitsbescheinigung",
+          "Bauvoranfrage"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://martin-buenger-architekt.de/#website",
+        "url": "https://martin-buenger-architekt.de/",
+        "name": "Martin Bünger Architekt",
+        "inLanguage": "de-DE",
+        "publisher": {
+          "@id": "https://martin-buenger-architekt.de/#buero"
+        }
+      }
+    ]
   }
   </script>
 
@@ -216,7 +447,7 @@
     z-index: 100;
   ">
     <a href="#" style="display:flex;align-items:center;gap:0.6rem;">
-      <img src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
+      <img width="600" height="600" src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
       <span style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#0D0D0D;">Martin Bünger Architekt</span>
     </a>
     <div class="nav-links" style="display:flex;gap:2.5rem;align-items:center;">
@@ -238,14 +469,23 @@
   </nav>
 
   <!-- ═══ HERO ═══ -->
-  <section style="position:relative;width:100%;aspect-ratio:16/7;overflow:hidden;background:#E8E4DE;min-height:320px;">
-    <!-- Foto gedämpft: Sättigung reduziert, leicht aufgehellt -->
-    <img src="images/projekte/kita-zedernpark/00-Bv Zedernpark 1.jpg" alt="Architekturbüro Martin Bünger" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.7) brightness(1.08);">
-    <!-- Gradient-Overlay für Lesbarkeit des Textes -->
-    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.15) 60%, transparent 100%);"></div>
+  <section class="hero" style="position:relative;width:100%;aspect-ratio:16/7;overflow:hidden;background:#E8E4DE;min-height:320px;">
+    <!-- Bildwechsel alle 4 s mit leiser Kamerafahrt.
+         Bilder liegen in images/hero/ (16:9, bis 3200 px breit) – Reihenfolge hier = Reihenfolge im Wechsel.
+         Ohne JavaScript steht das erste Bild ruhig da. Aufhellung für die Schrift: .hero::after im CSS. -->
+    <div class="hero__bilder">
+      <img src="images/hero/hero-1-kita-zedernpark.webp" width="3200" height="1800" alt="Architekturbüro Martin Bünger, Kindertagesstätte Zedernpark in Bad Honnef" fetchpriority="high">
+      <img src="images/hero/hero-2-finca-mallorca.webp" width="3200" height="1800" alt="Finca auf Mallorca, Neubau von Martin Bünger Architekt" loading="lazy">
+      <img src="images/hero/hero-3-villa-wilhelmstrasse.webp" width="3200" height="1800" alt="Villa Wilhelmstraße in Bad Honnef, Neubau von Martin Bünger Architekt" loading="lazy">
+      <img src="images/hero/hero-4-anbau-einfamilienhaus.webp" width="2048" height="1152" alt="Anbau an ein Einfamilienhaus in Bad Honnef, Wohnraum mit Giebelfenster, Martin Bünger Architekt" loading="lazy">
+      <img src="images/hero/hero-5-einfamilienhaus-bad-honnef.webp" width="2048" height="1152" alt="Einfamilienhaus in Bad Honnef, Neubau von Martin Bünger Architekt" loading="lazy">
+      <img class="ganz" src="images/hero/hero-6-treppenhaus.webp" width="772" height="1152" alt="Einfamilienhaus in Bad Honnef, Treppenhaus mit Holztreppe und Wandleuchten, Martin Bünger Architekt" loading="lazy">
+      <img src="images/hero/hero-7-wohngebaeude-tiefgarage.webp" width="1024" height="576" alt="Wohngebäude mit Tiefgarage in Bad Honnef, Neubau von Martin Bünger Architekt" loading="lazy">
+      <img src="images/hero/hero-8-dachausbau.webp" width="860" height="484" alt="Dachausbau eines Einfamilienhauses, ausgebauter Dachstuhl, Martin Bünger Architekt" loading="lazy">
+    </div>
     <div style="position:absolute;inset:0;display:flex;align-items:flex-end;">
       <div style="padding:3rem 6%;max-width:780px;">
-        <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#4B4B4B;margin-bottom:0.9rem;">
+        <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#3A3A3A;margin-bottom:0.9rem;">
           Architekturbüro Bad Honnef, seit 1998
         </p>
         <h1 style="font-family:'DM Sans',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;line-height:1.08;letter-spacing:-0.025em;color:#0D0D0D;margin:0;">
@@ -316,7 +556,221 @@
       </div>
     </div>
 
-    <div class="project-grid" id="projektGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px;"></div>
+    <!-- Projektkarten stehen fest im HTML, damit Suchmaschinen und KI-Systeme sie
+         ohne JavaScript lesen. Hier pflegen: Titel, Ort, Typ, Kategorie (data-cat)
+         und Vorschaubild. Die Galerie-Bilder je Projekt stehen im Skript unter GALERIEN,
+         zugeordnet über data-id (= Ordner images/projekte/{id}/). -->
+    <div class="project-grid" id="projektGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px;">
+      <!-- ── NEUBAU ── -->
+      <article class="project-card" data-id="villa-wilhelmstrasse" data-cat="neubau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/villa-wilhelmstrasse/03-3.jpg" alt="Villa Wilhelmstraße, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Neubau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Villa Wilhelmstraße</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="mehrfamilienhaus-tiedke" data-cat="neubau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#D5D0C8;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/mehrfamilienhaus-tiedke/03-3.jpg" alt="Mehrfamilienhaus, Bonn" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bonn · Neubau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Mehrfamilienhaus Bonn</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="einfamilienhaus-koecke" data-cat="neubau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#EAE8E4;cursor:pointer;">
+        <img width="2048" height="1372" src="images/projekte/einfamilienhaus-koecke/Köcke 1.jpeg" alt="Einfamilienhaus Bad Honnef, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Neubau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Einfamilienhaus Bad Honnef</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="wohngebaeude-tiefgarage" data-cat="neubau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDDAD4;cursor:pointer;">
+        <img width="1024" height="686" src="images/projekte/wohngebaeude-tiefgarage/Unknown.jpg" alt="Wohngebäude mit Tiefgarage, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Neubau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Wohngebäude mit Tiefgarage</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="finca-mallorca" data-cat="neubau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#C8C3BA;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/finca-mallorca/1-2_2026-06-09_11_16_07.788414.png" alt="Finca, Mallorca" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Mallorca · Neubau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Finca</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="wohn-buerogebaeude-tiefgarage" data-cat="neubau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E0DDD7;cursor:pointer;">
+        <img width="2048" height="3056" src="images/projekte/wohn-buerogebaeude-tiefgarage/TG 1.jpeg" alt="Wohn- &amp; Bürogebäude mit Tiefgarage" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Neubau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Wohn- &amp; Bürogebäude mit Tiefgarage</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── UMBAU ── -->
+      <article class="project-card" data-id="dachausbau-einfamilienhaus" data-cat="umbau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#EAE8E4;cursor:pointer;">
+        <img width="860" height="576" src="images/projekte/dachausbau-einfamilienhaus/42.jpg" alt="Dachausbau Einfamilienhaus" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Umbau &amp; Modernisierung</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Dachausbau Einfamilienhaus</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="fachwerkhaus-erweiterung-koenigswinter" data-cat="umbau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#D5D0C8;cursor:pointer;">
+        <img width="1533" height="1026" src="images/projekte/fachwerkhaus-erweiterung-koenigswinter/8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f.png" alt="Fachwerkhaus-Erweiterung, Königswinter" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Königswinter · Denkmalschutz</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Fachwerkhaus-Erweiterung</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="anbau-firmenich" data-cat="umbau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
+        <img width="2048" height="3056" src="images/projekte/anbau-firmenich/odmzsj7s3zqxotyk77o6.jpeg" alt="Anbau Einfamilienhaus, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Anbau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Anbau Einfamilienhaus</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="fachwerkhaus-umbau-spiessgasse" data-cat="umbau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDDAD4;cursor:pointer;">
+        <img width="1720" height="1152" src="images/projekte/fachwerkhaus-umbau-spiessgasse/FWH 1.jpg" alt="Fachwerkhaus-Umbau Spießgasse, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Denkmalschutz</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Fachwerkhaus-Umbau Spießgasse</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="modernisierung-hoefling" data-cat="umbau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#C8C3BA;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/modernisierung-hoefling/ho_fling_1_2026-06-11_14_00_52.207468.webp" alt="Modernisierung Einfamilienhaus" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Modernisierung</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Modernisierung Einfamilienhaus</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="terrasse-oberkassel" data-cat="umbau"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
+        <img width="2400" height="1800" src="images/projekte/terrasse-oberkassel/terrasse-1.jpg" alt="Terrasse, Bonn-Oberkassel" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bonn-Oberkassel · Anbau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Terrasse</h3>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── GEWERBE ── -->
+      <article class="project-card" data-id="kita-zedernpark" data-cat="gewerbe"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#EAE8E4;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/kita-zedernpark/00-Bv Zedernpark 1.jpg" alt="Kindertagesstätte Zedernpark, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Öffentlich</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Kindertagesstätte Zedernpark</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="gewerbefassade-ottersbach" data-cat="gewerbe"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#D5D0C8;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/gewerbefassade-ottersbach/GG_Bonn_3_2026-06-11_13_46_12.770783.webp" alt="Gewerbefassade Ottersbach, Bonn" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bonn · Gewerbe</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Gewerbefassade Ottersbach</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="altenpflegeheim-bad-muenstereifel" data-cat="gewerbe"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#DDDAD4;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/altenpflegeheim-bad-muenstereifel/AH_1_2026-06-11_13_46_11.087749.webp" alt="Altenpflegeheim Um- &amp; Anbau, Bad Münstereifel" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Münstereifel · Umbau</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Altenpflegeheim Um- &amp; Anbau</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="biogeschaeft-momo" data-cat="gewerbe"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#E8E4DE;cursor:pointer;">
+        <img width="1544" height="2304" src="images/projekte/biogeschaeft-momo/Momo_1_2026-06-11_13_46_13.459679.webp" alt="Biogeschäft-Erweiterung Momo, Bonn-Beuel" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bonn-Beuel · Gewerbe</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Biogeschäft-Erweiterung Momo</h3>
+          </div>
+        </div>
+      </article>
+      <article class="project-card" data-id="fertigturnhalle-hager-hof" data-cat="gewerbe"
+               style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#C8C3BA;cursor:pointer;">
+        <img width="3440" height="2304" src="images/projekte/fertigturnhalle-hager-hof/Turnhalle_1_2026-06-11_13_46_14.263873.webp" alt="Fertigturnhalle Hager Hof, Bad Honnef" loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+             onerror="this.style.display='none'">
+        <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
+          <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
+            <p class="projekt-meta" style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">Bad Honnef · Sport</p>
+            <h3 class="projekt-titel" style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">Fertigturnhalle Hager Hof</h3>
+          </div>
+        </div>
+      </article>
+    </div>
 
     <div style="margin-top:3rem;text-align:center;">
       <a href="projektliste.html" class="all-projects-link" style="display:inline-flex;align-items:center;gap:0.6rem;border:1px solid #0D0D0D;padding:0.75rem 1.6rem;font-size:0.76rem;letter-spacing:0.08em;text-transform:uppercase;color:#0D0D0D;font-family:'Inter',sans-serif;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='#0D0D0D'" onmouseout="this.style.background='transparent'">
@@ -340,7 +794,7 @@
           Seit mehr als 30 Jahren planen und begleiten wir Bauvorhaben in der Region zwischen Bonn und dem Siebengebirge, vom privaten Einfamilienhaus über Mehrfamilienhäuser und die Modernisierung historischer Fachwerkhäuser bis hin zu größeren Vorhaben wie der Schulerweiterung am Hagerhof. Diese Vielfalt an Aufgaben und Maßstäben prägt unsere Arbeit bis heute.
         </p>
         <p style="font-size:1rem;color:#4B4B4B;line-height:1.82;margin-bottom:2.5rem;">
-          Seit dem Architekturstudium sind wir – Martin Bünger (Architekt) und sein Kernteam – eingespielt. Jedes Projekt begleiten wir gemeinsam von der ersten Skizze bis zur Ausführung, mit einem Netzwerk bewährter Handwerksbetriebe an unserer Seite.
+          Wir, Martin Bünger (Architekt) und sein Kernteam, sind seit dem Architekturstudium eingespielt. Jedes Projekt begleiten wir gemeinsam von der ersten Skizze bis zur Ausführung, mit einem Netzwerk bewährter Handwerksbetriebe an unserer Seite.
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
           <span style="font-size:0.68rem;letter-spacing:0.07em;text-transform:uppercase;border:1px solid #D1D1D1;padding:0.35rem 0.85rem;color:#4B4B4B;">Ein- & Mehrfamilienhäuser</span>
@@ -356,7 +810,7 @@
           <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;text-align:center;padding:1rem;">Bild Büro / Team<br>folgt</p>
         </div>
         <a href="https://www.aknw.de" target="_blank" rel="noopener" title="Eingetragen bei der Architektenkammer NRW · Mitglied-Nr. A 27058" style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-decoration:none;border:1px solid #D1D1D1;padding:1.5rem;">
-          <img src="download.png" alt="Architektenkammer NRW" style="width:72px;height:72px;object-fit:contain;">
+          <img width="803" height="803" src="download.png" alt="Architektenkammer NRW" style="width:72px;height:72px;object-fit:contain;">
           <p style="font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:#9CA3AF;text-align:center;line-height:1.6;">Mitglied der<br>Architektenkammer NRW</p>
         </a>
       </div>
@@ -400,7 +854,7 @@
             <span class="acc-icon" style="flex-shrink:0;font-size:1.3rem;font-weight:300;color:#9CA3AF;line-height:1;">+</span>
           </summary>
           <p style="margin-top:1.1rem;font-size:0.9rem;color:#4B4B4B;line-height:1.75;">
-            Eine Abgeschlossenheitsbescheinigung ist Voraussetzung, um ein Gebäude rechtswirksam in einzelne Eigentumswohnungen aufzuteilen – Grundbuchämter verlangen sie für die Eintragung von Sondereigentum, Banken häufig bei der separaten Finanzierung einzelner Wohnungen. Wir erstellen die dafür notwendigen Anträge und Pläne nach dem Wohnungseigentumsgesetz (WEG).
+            Eine Abgeschlossenheitsbescheinigung ist Voraussetzung, um ein Gebäude rechtswirksam in einzelne Eigentumswohnungen aufzuteilen. Grundbuchämter verlangen sie für die Eintragung von Sondereigentum, Banken häufig bei der separaten Finanzierung einzelner Wohnungen. Wir erstellen die dafür notwendigen Anträge und Pläne nach dem Wohnungseigentumsgesetz (WEG).
           </p>
         </details>
 
@@ -455,7 +909,7 @@
 
     <!-- Architektenkammer-Zeichen -->
     <a href="https://www.aknw.de" target="_blank" rel="noopener" title="Eingetragen bei der Architektenkammer NRW · A 27058" style="display:flex;align-items:center;opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-      <img src="download.png" alt="Architektenkammer NRW" style="height:36px;width:auto;filter:invert(1);">
+      <img width="803" height="803" src="download.png" alt="Architektenkammer NRW" style="height:36px;width:auto;filter:invert(1);">
     </a>
 
     <div style="display:flex;gap:1.5rem;">
@@ -502,319 +956,174 @@
 
   <script>
   /* ═══════════════════════════════════════════════════════════════════════
-     PROJEKT-KONFIGURATION
+     PROJEKT-GALERIEN
      ───────────────────────────────────────────────────────────────────────
-     Bilder hochladen nach:  images/projekte/{id}/
+     Die Projektkarten selbst (Titel, Ort, Typ, Kategorie, Vorschaubild) stehen
+     als HTML im Abschnitt PROJEKTE. Hier stehen nur die Bilder der Galerie,
+     die sich beim Klick auf eine Karte öffnet.
 
-     cover   → Dateiname des Bilds, das auf der STARTSEITE erscheint.
-               Einfach ändern, um ein anderes Bild als Vorschau zu wählen.
-               Beispiel:  cover: '03.jpg'
+     Schlüssel = data-id der Karte = Ordner unter images/projekte/{id}/
+     Das Vorschaubild der Karte muss in der Liste enthalten sein, die Galerie
+     startet bei ihm.
 
-     bilder  → Alle Bilder für die Galerie, in gewünschter Reihenfolge.
-               Das cover-Bild muss hier ebenfalls enthalten sein.
-               Neue Bilder einfach zur Liste hinzufügen.
+     Projekt mit Vorher/Nachher-Umschalter: statt einer Liste ein Objekt
+     mit den Listen vorher und nachher angeben.
+
+     Neues Projekt: Karte im HTML kopieren und anpassen, Bilderliste hier ergänzen.
   ═══════════════════════════════════════════════════════════════════════ */
-  const PROJEKTE = [
-    // ── NEUBAU ──────────────────────────────────────────────────────────
-    {
-      id:         'villa-wilhelmstrasse',
-      titel:      'Villa Wilhelmstraße',
-      ort:        'Bad Honnef',
-      typ:        'Neubau',
-      kategorie:  'neubau',
-      bgFallback: '#E8E4DE',
-      cover:      '03-3.jpg',         // ← Startseiten-Bild hier ändern
-      bilder:     [                   // ← Bilder für die Galerie
-        '01-1.jpg',
-        '02-2.jpg',
-        '03-3.jpg',
-        '04-4.jpg',
-        '05-5.jpg',
-        '06-6.jpg',
-        '07-7.jpg',
-        '08-8.jpg',
+  const GALERIEN = {
+    'villa-wilhelmstrasse': [
+      '01-1.jpg',
+      '02-2.jpg',
+      '03-3.jpg',
+      '04-4.jpg',
+      '05-5.jpg',
+      '06-6.jpg',
+      '07-7.jpg',
+      '08-8.jpg',
+    ],
+    'mehrfamilienhaus-tiedke': [
+      '01-1.jpg',
+      '02-2.jpg',
+      '03-3.jpg',
+      '04-4.jpg',
+      '05-5.jpg',
+    ],
+    'einfamilienhaus-koecke': [
+      'Köcke 1.jpeg',
+      'Köcke 2.jpeg',
+      'Köcke 3.jpeg',
+      'Köcke 4.jpg',
+      'Köcke 5.jpg',
+      'Köcke 6.jpeg',
+      'Köcke 7.jpg',
+      'Köcke 9.jpeg',
+      'Köcke 10.jpg',
+      'Köcke 11.jpg',
+      'Köcke 12.jpg',
+    ],
+    'wohngebaeude-tiefgarage': ['Unknown.jpg', '2_2026-06-09_11_03_21.580549.jpeg'],
+    'finca-mallorca': [
+      '1-2_2026-06-09_11_16_07.788414.png',
+      '2-2_2026-06-09_11_16_08.074375.png',
+      '3_2026-06-09_11_16_08.367362.png',
+    ],
+    'wohn-buerogebaeude-tiefgarage': ['TG 1.jpeg', 'TG 2.jpeg', 'TG 3.jpeg'],
+    'dachausbau-einfamilienhaus': [
+      '16-2.jpg',
+      '17.jpg',
+      '19.jpg',
+      '21.jpg',
+      '29.jpg',
+      '34.jpg',
+      '35.jpg',
+      '42.jpg',
+      '1_2026-06-09_11_31_36.765791.png',
+      '2_2026-06-09_11_31_37.041466.png',
+      '3_2026-06-09_11_31_37.251218.png',
+      '4_2026-06-09_11_31_37.545778.png',
+      '5_2026-06-09_11_31_37.751110.png',
+      '6_2026-06-09_11_31_37.969207.png',
+      '7_2026-06-09_11_31_38.203671.png',
+      '8_2026-06-09_11_31_38.446131.png',
+      '9_2026-06-09_11_31_38.644121.png',
+      '10_2026-06-09_11_31_38.916613.png',
+    ],
+    'fachwerkhaus-erweiterung-koenigswinter': {
+      vorher:  [
+        '1.jpg',
+        '2.jpg',
+        '3.jpg',
+        '4.jpg',
+        '5.jpg',
+        '6.jpg',
+        '7.jpg',
+        '8.jpg',
+        '10.jpg',
+        '11.jpg',
+        '15.jpg',
+      ],
+      nachher: [
+        '8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f.png',
+        'e6486c4c-fdd5-4bab-886c-eaa3eb76ff5c.png',
       ],
     },
-    {
-      id:         'mehrfamilienhaus-tiedke',
-      titel:      'Mehrfamilienhaus Bad Honnef',
-      ort:        'Bonn',
-      typ:        'Neubau',
-      kategorie:  'neubau',
-      bgFallback: '#D5D0C8',
-      cover:      '03-3.jpg',
-      bilder:     ['01-1.jpg', '02-2.jpg', '03-3.jpg', '04-4.jpg', '05-5.jpg'],
-    },
-    {
-      id:         'einfamilienhaus-koecke',
-      titel:      'Einfamilienhaus Bad Honnef',
-      ort:        'Bad Honnef',
-      typ:        'Neubau',
-      kategorie:  'neubau',
-      bgFallback: '#EAE8E4',
-      cover:      'Köcke 1.jpeg',
-      bilder:     [
-        'Köcke 1.jpeg',
-        'Köcke 2.jpeg',
-        'Köcke 3.jpeg',
-        'Köcke 4.jpg',
-        'Köcke 5.jpg',
-        'Köcke 6.jpeg',
-        'Köcke 7.jpg',
-        'Köcke 9.jpeg',
-        'Köcke 10.jpg',
-        'Köcke 11.jpg',
-        'Köcke 12.jpg',
-      ],
-    },
-    {
-      id:         'wohngebaeude-tiefgarage',
-      titel:      'Wohngebäude mit Tiefgarage',
-      ort:        'Bad Honnef',
-      typ:        'Neubau',
-      kategorie:  'neubau',
-      bgFallback: '#DDDAD4',
-      cover:      'Unknown.jpg',
-      bilder:     ['Unknown.jpg', '2_2026-06-09_11_03_21.580549.jpeg'],
-    },
-    {
-      id:         'finca-mallorca',
-      titel:      'Finca',
-      ort:        'Mallorca',
-      typ:        'Neubau',
-      kategorie:  'neubau',
-      bgFallback: '#C8C3BA',
-      cover:      '1-2_2026-06-09_11_16_07.788414.png',
-      bilder:     ['1-2_2026-06-09_11_16_07.788414.png', '2-2_2026-06-09_11_16_08.074375.png', '3_2026-06-09_11_16_08.367362.png'],
-    },
-    {
-      id:         'wohn-buerogebaeude-tiefgarage',
-      titel:      'Wohn- & Bürogebäude mit Tiefgarage',
-      ort:        '',
-      typ:        'Neubau',
-      kategorie:  'neubau',
-      bgFallback: '#E0DDD7',
-      cover:      'TG 1.jpeg',
-      bilder:     [
-        'TG 1.jpeg',
-        'TG 2.jpeg',
-        'TG 3.jpeg',
-      ],
-    },
-    // ── UMBAU ───────────────────────────────────────────────────────────
-    {
-      id:         'dachausbau-einfamilienhaus',
-      titel:      'Dachausbau Einfamilienhaus',
-      ort:        '',
-      typ:        'Umbau & Modernisierung',
-      kategorie:  'umbau',
-      bgFallback: '#EAE8E4',
-      cover:      '42.jpg',
-      bilder:     [
-        '16-2.jpg',
-        '17.jpg',
-        '19.jpg',
-        '21.jpg',
-        '29.jpg',
-        '34.jpg',
-        '35.jpg',
-        '42.jpg',
-        '1_2026-06-09_11_31_36.765791.png',
-        '2_2026-06-09_11_31_37.041466.png',
-        '3_2026-06-09_11_31_37.251218.png',
-        '4_2026-06-09_11_31_37.545778.png',
-        '5_2026-06-09_11_31_37.751110.png',
-        '6_2026-06-09_11_31_37.969207.png',
-        '7_2026-06-09_11_31_38.203671.png',
-        '8_2026-06-09_11_31_38.446131.png',
-        '9_2026-06-09_11_31_38.644121.png',
-        '10_2026-06-09_11_31_38.916613.png',
-      ],
-    },
-    {
-      id:            'fachwerkhaus-erweiterung-koenigswinter',
-      titel:         'Fachwerkhaus-Erweiterung',
-      ort:           'Königswinter',
-      typ:           'Denkmalschutz',
-      kategorie:     'umbau',
-      bgFallback:    '#D5D0C8',
-      vorherNachher: true,
-      cover:         '8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f.png',
-      bilder:        ['1.jpg', '8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f.png'],
-      bilderVorher:  ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '10.jpg', '11.jpg', '15.jpg'],
-      bilderNachher: ['8bbb9f26-cbcc-4cc6-9f0b-cfb5c68f1a2f.png', 'e6486c4c-fdd5-4bab-886c-eaa3eb76ff5c.png'],
-    },
-    {
-      id:         'anbau-firmenich',
-      titel:      'Anbau Einfamilienhaus',
-      ort:        'Bad Honnef',
-      typ:        'Anbau',
-      kategorie:  'umbau',
-      bgFallback: '#E8E4DE',
-      cover:      'odmzsj7s3zqxotyk77o6.jpeg',
-      bilder:     [
-        'beia4yyputpmabnekikp.jpeg',
-        'k0clr252yahkyu7nv7si.jpeg',
-        'oapmfpig9hsamhh5wqfp.jpeg',
-        'odmzsj7s3zqxotyk77o6.jpeg',
-        'oqh9kmjig4jj8pvcztol.jpeg',
-        'sqnb4ypjatfkieouhgdi.jpeg',
-      ],
-    },
-    {
-      id:         'fachwerkhaus-umbau-spiessgasse',
-      titel:      'Fachwerkhaus-Umbau Spießgasse',
-      ort:        'Bad Honnef',
-      typ:        'Denkmalschutz',
-      kategorie:  'umbau',
-      bgFallback: '#DDDAD4',
-      cover:      'FWH 1.jpg',
-      bilder:     [
-        'FWH 1.jpg',
-        'FWH 2.jpg',
-        'FWH 3.jpg',
-        'FWH 4.jpg',
-        'FWH 5.jpg',
-        'FWH 6.jpg',
-        'FWH 7.jpg',
-        'FWH 8.jpg',
-      ],
-    },
-    {
-      id:         'modernisierung-hoefling',
-      titel:      'Modernisierung Einfamilienhaus',
-      ort:        '',
-      typ:        'Modernisierung',
-      kategorie:  'umbau',
-      bgFallback: '#C8C3BA',
-      cover:      'ho_fling_1_2026-06-11_14_00_52.207468.webp',
-      bilder:     [
-        'ho_fling_1_2026-06-11_14_00_52.207468.webp',
-        'Ho_fling_2_2026-06-11_14_00_52.579208.webp',
-        'Höfling 3.jpg',
-        'Höfling 4.jpg',
-        'Höfling 5.jpg',
-        'Höfling 6.jpg',
-        'Höfling 7.jpg',
-        'Höfling 8.jpg',
-        'Höfling 9.jpg',
-      ],
-    },
-    // ── GEWERBE ─────────────────────────────────────────────────────────
-    {
-      id:         'kita-zedernpark',
-      titel:      'Kindertagesstätte Zedernpark',
-      ort:        'Bad Honnef',
-      typ:        'Öffentlich',
-      kategorie:  'gewerbe',
-      bgFallback: '#EAE8E4',
-      cover:      '00-Bv Zedernpark 1.jpg',
-      bilder:     [
-        '00-Bv Zedernpark 1.jpg',
-        '01-Bv Zedernpark 2.jpg',
-        '02-Bv Zedernpark 3.jpg',
-        '03-Bv Zedernpark 4.jpg',
-        '04-Bv Zedernpark 5.jpg',
-        '05-Bv Zedernpark 6.jpg',
-        '06-Bv Zedernpark 7.jpg',
-        '07-Bv Zedernpark 8.jpg',
-        '08-Bv Zedernpark 9.jpg',
-        '09-Bv Zedernpark 10.jpg',
-        '10-Bv Zedernpark 11.jpg',
-        'IMG_2938_1.jpg',
-        'IMG_2958_1.jpg',
-        'IMG_2958_2.jpg',
-      ],
-    },
-    {
-      id:         'gewerbefassade-ottersbach',
-      titel:      'Gewerbefassade Ottersbach',
-      ort:        'Bonn',
-      typ:        'Gewerbe',
-      kategorie:  'gewerbe',
-      bgFallback: '#D5D0C8',
-      cover:      'GG_Bonn_3_2026-06-11_13_46_12.770783.webp',
-      bilder:     [
-        'GG_Bonn_1_2026-06-11_13_46_12.377174.webp',
-        'GG_Bonn_2_2026-06-11_13_46_12.587270.webp',
-        'GG_Bonn_3_2026-06-11_13_46_12.770783.webp',
-        'GG_Bonn_4_2026-06-11_13_46_12.886626.webp',
-        'GG_Bonn_5_2026-06-11_13_46_13.097281.webp',
-        'GG_Bonn_6_2026-06-11_13_46_13.322964.webp',
-      ],
-    },
-    {
-      id:         'altenpflegeheim-bad-muenstereifel',
-      titel:      'Altenpflegeheim Um- & Anbau',
-      ort:        'Bad Münstereifel',
-      typ:        'Umbau',
-      kategorie:  'gewerbe',
-      bgFallback: '#DDDAD4',
-      cover:      'AH_1_2026-06-11_13_46_11.087749.webp',
-      bilder:     [
-        'AH_1_2026-06-11_13_46_11.087749.webp',
-        'AH_2_2026-06-11_13_46_11.802956.webp',
-        'AH_3_2026-06-11_13_46_12.015949.webp',
-        'AH_4_2026-06-11_13_46_12.181600.webp',
-      ],
-    },
-    {
-      id:         'biogeschaeft-momo',
-      titel:      'Biogeschäft-Erweiterung Momo',
-      ort:        'Bonn-Beuel',
-      typ:        'Gewerbe',
-      kategorie:  'gewerbe',
-      bgFallback: '#E8E4DE',
-      cover:      'Momo_1_2026-06-11_13_46_13.459679.webp',
-      bilder:     [
-        'Momo_1_2026-06-11_13_46_13.459679.webp',
-        'Momo_2_2026-06-11_13_46_13.800216.webp',
-        'Momo_3_2026-06-11_13_46_13.905847.webp',
-        'Momo_4_2026-06-11_13_46_14.097621.webp',
-      ],
-    },
-    {
-      id:         'fertigturnhalle-hager-hof',
-      titel:      'Fertigturnhalle Hager Hof',
-      ort:        'Bad Honnef',
-      typ:        'Sport',
-      kategorie:  'gewerbe',
-      bgFallback: '#C8C3BA',
-      cover:      'Turnhalle_1_2026-06-11_13_46_14.263873.webp',
-      bilder:     [
-        'Turnhalle_1_2026-06-11_13_46_14.263873.webp',
-        'Turnhalle_2_2026-06-11_13_46_14.452088.webp',
-      ],
-    },
-  ];
+    'anbau-firmenich': [
+      'beia4yyputpmabnekikp.jpeg',
+      'k0clr252yahkyu7nv7si.jpeg',
+      'oapmfpig9hsamhh5wqfp.jpeg',
+      'odmzsj7s3zqxotyk77o6.jpeg',
+      'oqh9kmjig4jj8pvcztol.jpeg',
+      'sqnb4ypjatfkieouhgdi.jpeg',
+    ],
+    'fachwerkhaus-umbau-spiessgasse': [
+      'FWH 1.jpg',
+      'FWH 2.jpg',
+      'FWH 3.jpg',
+      'FWH 4.jpg',
+      'FWH 5.jpg',
+      'FWH 6.jpg',
+      'FWH 7.jpg',
+      'FWH 8.jpg',
+    ],
+    'modernisierung-hoefling': [
+      'ho_fling_1_2026-06-11_14_00_52.207468.webp',
+      'Ho_fling_2_2026-06-11_14_00_52.579208.webp',
+      'Höfling 3.jpg',
+      'Höfling 4.jpg',
+      'Höfling 5.jpg',
+      'Höfling 6.jpg',
+      'Höfling 7.jpg',
+      'Höfling 8.jpg',
+      'Höfling 9.jpg',
+    ],
+    'terrasse-oberkassel': ['terrasse-1.jpg'],
+    'kita-zedernpark': [
+      '00-Bv Zedernpark 1.jpg',
+      '01-Bv Zedernpark 2.jpg',
+      '02-Bv Zedernpark 3.jpg',
+      '03-Bv Zedernpark 4.jpg',
+      '04-Bv Zedernpark 5.jpg',
+      '05-Bv Zedernpark 6.jpg',
+      '06-Bv Zedernpark 7.jpg',
+      '07-Bv Zedernpark 8.jpg',
+      '08-Bv Zedernpark 9.jpg',
+      '09-Bv Zedernpark 10.jpg',
+      '10-Bv Zedernpark 11.jpg',
+      'IMG_2938_1.jpg',
+      'IMG_2958_1.jpg',
+      'IMG_2958_2.jpg',
+    ],
+    'gewerbefassade-ottersbach': [
+      'GG_Bonn_1_2026-06-11_13_46_12.377174.webp',
+      'GG_Bonn_2_2026-06-11_13_46_12.587270.webp',
+      'GG_Bonn_3_2026-06-11_13_46_12.770783.webp',
+      'GG_Bonn_4_2026-06-11_13_46_12.886626.webp',
+      'GG_Bonn_5_2026-06-11_13_46_13.097281.webp',
+      'GG_Bonn_6_2026-06-11_13_46_13.322964.webp',
+    ],
+    'altenpflegeheim-bad-muenstereifel': [
+      'AH_1_2026-06-11_13_46_11.087749.webp',
+      'AH_2_2026-06-11_13_46_11.802956.webp',
+      'AH_3_2026-06-11_13_46_12.015949.webp',
+      'AH_4_2026-06-11_13_46_12.181600.webp',
+    ],
+    'biogeschaeft-momo': [
+      'Momo_1_2026-06-11_13_46_13.459679.webp',
+      'Momo_2_2026-06-11_13_46_13.800216.webp',
+      'Momo_3_2026-06-11_13_46_13.905847.webp',
+      'Momo_4_2026-06-11_13_46_14.097621.webp',
+    ],
+    'fertigturnhalle-hager-hof': [
+      'Turnhalle_1_2026-06-11_13_46_14.263873.webp',
+      'Turnhalle_2_2026-06-11_13_46_14.452088.webp',
+    ],
+  };
 
-  /* ─── Karten rendern ─────────────────────────────────────────────────── */
-  function renderKarten() {
-    const grid = document.getElementById('projektGrid');
-    grid.innerHTML = PROJEKTE.map((p, i) => {
-      const coverSrc = `images/projekte/${p.id}/${p.cover}`;
-      const meta = [p.ort, p.typ].filter(Boolean).join(' · ');
-      return `
-        <div class="project-card" data-cat="${p.kategorie}" data-idx="${i}"
-             style="position:relative;aspect-ratio:4/3;overflow:hidden;background:${p.bgFallback};cursor:pointer;">
-          <img src="${coverSrc}" alt="${p.titel}${p.ort ? `, ${p.ort}` : ''}"
-               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
-               onerror="this.style.display='none'">
-          <div class="overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.62) 0%,transparent 55%);">
-            <div style="position:absolute;bottom:0;left:0;padding:1.5rem;">
-              <p style="font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.35rem;">${meta}</p>
-              <p style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:#fff;">${p.titel}</p>
-            </div>
-          </div>
-        </div>`;
-    }).join('');
-
-    document.querySelectorAll('.project-card[data-idx]').forEach(card => {
-      card.addEventListener('click', () => openLightbox(parseInt(card.dataset.idx)));
-    });
-
-    applyFilter(currentFilter);
-  }
+  /* ─── Karten ────────────────────────────────────────────────────────── */
+  document.querySelectorAll('.project-card').forEach(karte => {
+    karte.addEventListener('click', () => openLightbox(karte));
+  });
 
   /* ─── Filter ─────────────────────────────────────────────────────────── */
   let currentFilter = 'alle';
@@ -834,14 +1143,18 @@
   });
 
   /* ─── Lightbox ───────────────────────────────────────────────────────── */
-  let lbProjektIdx = 0;
-  let lbBildIdx    = 0;
-  let lbModus      = 'nachher';
+  let lbKarte   = null;             // Projektkarte, deren Galerie offen ist
+  let lbBildIdx = 0;
+  let lbModus   = 'nachher';
+
+  // Vorher/Nachher-Projekte haben statt einer Liste ein Objekt mit zwei Listen
+  function lbVorherNachher() {
+    return !Array.isArray(GALERIEN[lbKarte.dataset.id]);
+  }
 
   function lbBilderAktuell() {
-    const p = PROJEKTE[lbProjektIdx];
-    if (!p.vorherNachher) return p.bilder;
-    return lbModus === 'vorher' ? p.bilderVorher : p.bilderNachher;
+    const galerie = GALERIEN[lbKarte.dataset.id];
+    return lbVorherNachher() ? galerie[lbModus] : galerie;
   }
 
   function lbSetModus(modus) {
@@ -854,15 +1167,15 @@
     lbUpdate();
   }
 
-  function openLightbox(projektIdx) {
-    lbProjektIdx = projektIdx;
-    lbModus      = 'nachher';
-    const p = PROJEKTE[projektIdx];
+  function openLightbox(karte) {
+    lbKarte = karte;
+    lbModus = 'nachher';
     const toggle = document.getElementById('lbToggle');
-    toggle.style.display = p.vorherNachher ? 'flex' : 'none';
-    if (p.vorherNachher) lbSetModus('nachher');
-    const bilder = lbBilderAktuell();
-    lbBildIdx = bilder.indexOf(p.cover);
+    toggle.style.display = lbVorherNachher() ? 'flex' : 'none';
+    if (lbVorherNachher()) lbSetModus('nachher');
+    // Galerie beim Vorschaubild der Karte beginnen
+    const cover = karte.querySelector('img').getAttribute('src').split('/').pop();
+    lbBildIdx = lbBilderAktuell().indexOf(cover);
     if (lbBildIdx < 0) lbBildIdx = 0;
     document.getElementById('lightbox').style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -882,17 +1195,17 @@
   }
 
   function lbUpdate() {
-    const p      = PROJEKTE[lbProjektIdx];
     const bilder = lbBilderAktuell();
     const img    = document.getElementById('lbImg');
+    const name   = lbKarte.querySelector('img').alt;   // "Titel, Ort"
     img.style.opacity = '0';
     setTimeout(() => {
-      img.src = `images/projekte/${p.id}/${bilder[lbBildIdx]}`;
-      img.alt = `${p.titel}${p.ort ? `, ${p.ort}` : ''} – Bild ${lbBildIdx + 1} von ${bilder.length}`;
+      img.src = `images/projekte/${lbKarte.dataset.id}/${bilder[lbBildIdx]}`;
+      img.alt = `${name}, Bild ${lbBildIdx + 1} von ${bilder.length}`;
       img.style.opacity = '1';
     }, 150);
-    document.getElementById('lbMeta').textContent  = [p.ort, p.typ].filter(Boolean).join(' · ');
-    document.getElementById('lbTitel').textContent = p.titel;
+    document.getElementById('lbMeta').textContent  = lbKarte.querySelector('.projekt-meta').textContent;
+    document.getElementById('lbTitel').textContent = lbKarte.querySelector('.projekt-titel').textContent;
     document.getElementById('lbCounter').textContent = bilder.length > 1
       ? `${lbBildIdx + 1} / ${bilder.length}` : '';
     const multi = bilder.length > 1;
@@ -918,9 +1231,49 @@
       if (Math.abs(diff) > 50) lbNavigate(diff > 0 ? 1 : -1);
     }, { passive: true });
   })();
+  </script>
 
-  /* ─── Init ────────────────────────────────────────────────────────────── */
-  renderKarten();
+  <!-- ═══ HERO-BILDWECHSEL ═══════════════════════════════════════════
+       Zugabe, keine Voraussetzung: ohne JavaScript steht das erste Bild. -->
+  <script>
+  var bilder = document.querySelectorAll('.hero__bilder img');
+  if (bilder.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var TAKT = 3000;          // Anzeigedauer je Bild
+    var ERSTER = 1500;        // der erste Wechsel kommt früher, damit ihn auch sieht,
+                              // wer gleich weiterscrollt
+    var BLENDE_ERST = 600;    // und er blendet schneller, damit er in dieser kurzen
+                              // Zeit auch wirklich als Wechsel ankommt.
+                              // Alle weiteren blenden ruhig in 1,2 s (siehe CSS).
+    var i = 0, rein = true;
+
+    // Die Fahrt dauert immer genau so lange wie das Bild steht. Nur dann ist sie
+    // beim Wechsel am Endwert und das nächste Bild setzt bündig an – sonst ruckt es.
+    function zeigen(bild, dauer) {
+      bild.classList.remove('rein', 'raus');
+      void bild.offsetWidth;                 // erzwingt den Neustart der Fahrt
+      bild.style.animationDuration = dauer + 'ms';
+      bild.classList.add('sichtbar', rein ? 'rein' : 'raus');
+    }
+
+    function weiter(schnell) {
+      var alt = bilder[i], j = (i + 1) % bilder.length, neu = bilder[j];
+      // Blendedauer festlegen, bevor die Klassen wechseln – sonst greift sie nicht
+      alt.style.transitionDuration = neu.style.transitionDuration =
+        schnell ? BLENDE_ERST + 'ms' : '';
+      // nur .sichtbar entfernen – die Richtungsklasse bleibt, damit die Fahrt
+      // des ausblendenden Bildes auf ihrem Endwert stehen bleibt
+      alt.classList.remove('sichtbar');
+      i = j;
+      rein = !rein;                          // Richtung wechselt bei jedem Bild
+      zeigen(neu, TAKT);
+    }
+
+    zeigen(bilder[0], ERSTER);
+    setTimeout(function () {
+      weiter(true);                          // der Auftakt: früher und kürzer
+      setInterval(function () { weiter(false); }, TAKT);
+    }, ERSTER);
+  }
   </script>
 
 </body>

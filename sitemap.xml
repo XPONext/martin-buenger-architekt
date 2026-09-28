@@ -2,366 +2,439 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://martin-buenger-architekt.de/</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>1.0</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/leistungen/kaufberatung.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/leistungen/leistungsphasen.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/leistungen/umbau-modernisierung.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/leistungen/bauleitung.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/leistungen/antraege.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/projektliste.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bonn.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/koenigswinter.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/siegburg.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/troisdorf.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/niederkassel.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/index.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/worauf-beim-hauskauf-bestandsimmobilie-achten.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/versteckte-maengel-immobilienkauf-erkennen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/sanierungskosten-altbau-realistisch-einschaetzen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/foerdermittel-sanierung-bestandsimmobilie.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/bausubstanzpruefung-vor-notartermin.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/kontakt.html</loc>
+    <lastmod>2026-08-17</lastmod>
     <priority>0.8</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/impressum.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/datenschutz.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bonn/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bonn/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bonn/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bonn/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/bonn/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/koenigswinter/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/koenigswinter/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/koenigswinter/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/koenigswinter/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/koenigswinter/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/siegburg/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/siegburg/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/siegburg/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/siegburg/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/siegburg/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/troisdorf/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/troisdorf/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/troisdorf/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/troisdorf/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/troisdorf/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/niederkassel/kaufberatung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/niederkassel/leistungsphasen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/niederkassel/umbau-modernisierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/niederkassel/bauleitung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/einzugsgebiet/niederkassel/antraege.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/heizung-altbau-austauschpflicht-2026.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/individueller-sanierungsfahrplan-isfp-lohnt-sich.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/reihenfolge-energetische-sanierung-altbau.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/daemmpflicht-oberste-geschossdecke-nach-hauskauf.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/bafa-foerderung-antrag-schritt-fuer-schritt.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/haus-unter-denkmalschutz-erkennen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/fachwerkhaus-sanieren-kosten-mehrkosten.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/daemmung-fachwerkhaus-denkmalschutz.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/foerderung-denkmalgeschuetztes-gebaeude-sanieren.html</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/steuervorteil-denkmal-afa-sanierung.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/architektenhonorar-hoai-berechnen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/wie-viele-leistungsphasen-beauftragen.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/lp1-lp2-lp3-unterschied-hoai.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/dauer-baugenehmigung-nrw.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://martin-buenger-architekt.de/blog/objektueberwachung-lp8-wichtigste-phase.html</loc>
+    <lastmod>2026-07-27</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>

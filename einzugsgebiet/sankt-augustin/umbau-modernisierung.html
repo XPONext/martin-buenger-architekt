@@ -29,23 +29,59 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Martin Bünger Architekt",
-    "description": "Architekturbüro mit Sitz in Bad Honnef, tätig in Sankt Augustin: Kaufberatung, Umbau und Modernisierung im Bestand, Planung nach HOAI, Bauleitung.",
-    "url": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html",
-    "telephone": "+49-2224-941306",
-    "email": "martin.buenger@t-online.de",
-    "foundingDate": "1998",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Linzer Straße 21",
-      "postalCode": "53604",
-      "addressLocality": "Bad Honnef",
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    },
-    "areaServed": "Sankt Augustin",
-    "priceRange": "€€"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html",
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html",
+        "name": "Umbau & Modernisierung in Sankt Augustin | Martin Bünger",
+        "description": "Umbau und Modernisierung von Bestandsgebäuden in Sankt Augustin: energetische Sanierung, Grundrissveränderungen, Erweiterungen.",
+        "inLanguage": "de-DE",
+        "isPartOf": {
+          "@id": "https://martin-buenger-architekt.de/#website"
+        },
+        "about": {
+          "@id": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html#leistung"
+        },
+        "dateModified": "2026-07-27",
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "Einwohnerzahlen Sankt Augustin (Stand 31.12.2023)",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Rhein-Sieg-Kreis"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html#leistung",
+        "name": "Umbau und Modernisierung in Sankt Augustin",
+        "serviceType": "Umbau und Modernisierung im Bestand",
+        "provider": {
+          "@type": "ProfessionalService",
+          "@id": "https://martin-buenger-architekt.de/#buero",
+          "name": "Martin Bünger Architekt",
+          "url": "https://martin-buenger-architekt.de/",
+          "telephone": "+49-2224-941306",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Linzer Straße 21",
+            "postalCode": "53604",
+            "addressLocality": "Bad Honnef",
+            "addressRegion": "Nordrhein-Westfalen",
+            "addressCountry": "DE"
+          }
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Sankt Augustin"
+        },
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin/umbau-modernisierung.html"
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -120,7 +156,7 @@
   <!-- NAV -->
   <nav style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 6%;position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #E5E5E5;z-index:100;">
     <a href="../../index.html" style="display:flex;align-items:center;gap:0.6rem;">
-      <img src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
+      <img width="600" height="600" src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
       <span style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#0D0D0D;">Martin Bünger Architekt</span>
     </a>
     <div class="nav-links" style="display:flex;gap:2.5rem;align-items:center;">
@@ -154,12 +190,10 @@
         Für Bestandsgebäude in Sankt Augustin, nur 7 km von Siegburg entfernt, planen wir Umbau und Modernisierung unter denselben rechtlichen Rahmenbedingungen wie am Bürositz.
       </p>
       <div style="font-size:0.92rem;color:#4B4B4B;line-height:1.8;display:flex;flex-direction:column;gap:1.2rem;">
-        <p>Ob energetische Sanierung, Grundrissänderung oder Anbau – wir binden die aktuelle BAFA-Förderung (15 % Zuschuss, mit Sanierungsfahrplan bis 20 %) von Beginn an in die Kostenplanung ein.</p>
+        <p>Ob energetische Sanierung, Grundrissänderung oder Anbau: Wir binden die aktuelle BAFA-Förderung (15 % Zuschuss, mit Sanierungsfahrplan bis 20 %) von Beginn an in die Kostenplanung ein.</p>
         <p>Mehr zur Leistung im Allgemeinen: <a href="../../leistungen/umbau-modernisierung.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Umbau und Modernisierung</a>. Vertiefend dazu unser Beitrag <a href="../../blog/foerdermittel-sanierung-bestandsimmobilie.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Fördermittel für die Sanierung einer Bestandsimmobilie</a>. Mehr zum Standort insgesamt: <a href="../sankt-augustin.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Sankt Augustin-Übersicht</a>.</p>
       </div>
-      <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E5E5;">
-        Quelle: Rhein-Sieg-Kreis, Einwohnerzahlen Sankt Augustin (Stand 31.12.2023)
-      </p>
+      <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E5E5;">Stand: 27. Juli 2026</p>
     </div>
   </section>
 

@@ -29,23 +29,59 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Martin Bünger Architekt",
-    "description": "Architekturbüro mit Sitz in Bad Honnef, tätig in Bad Honnef: Kaufberatung, Umbau und Modernisierung im Bestand, Planung nach HOAI, Bauleitung.",
-    "url": "https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html",
-    "telephone": "+49-2224-941306",
-    "email": "martin.buenger@t-online.de",
-    "foundingDate": "1998",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Linzer Straße 21",
-      "postalCode": "53604",
-      "addressLocality": "Bad Honnef",
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    },
-    "areaServed": "Bad Honnef",
-    "priceRange": "€€"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html",
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html",
+        "name": "Bauleitung in Bad Honnef | Martin Bünger Architekt",
+        "description": "Bauleitung in Bad Honnef: Qualität, Termine und Kosten Ihres Bauvorhabens im Blick, mit eingespieltem Team aus Handwerksbetrieben, direkt vor Ort ansässig.",
+        "inLanguage": "de-DE",
+        "isPartOf": {
+          "@id": "https://martin-buenger-architekt.de/#website"
+        },
+        "about": {
+          "@id": "https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html#leistung"
+        },
+        "dateModified": "2026-07-27",
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "Projektliste 1998–2025",
+            "url": "https://martin-buenger-architekt.de/projektliste.html",
+            "author": {
+              "@id": "https://martin-buenger-architekt.de/#buero"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html#leistung",
+        "name": "Bauleitung in Bad Honnef",
+        "serviceType": "Bauleitung und Objektüberwachung",
+        "provider": {
+          "@type": "ProfessionalService",
+          "@id": "https://martin-buenger-architekt.de/#buero",
+          "name": "Martin Bünger Architekt",
+          "url": "https://martin-buenger-architekt.de/",
+          "telephone": "+49-2224-941306",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Linzer Straße 21",
+            "postalCode": "53604",
+            "addressLocality": "Bad Honnef",
+            "addressRegion": "Nordrhein-Westfalen",
+            "addressCountry": "DE"
+          }
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Bad Honnef"
+        },
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/bad-honnef/bauleitung.html"
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -120,7 +156,7 @@
   <!-- NAV -->
   <nav style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 6%;position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #E5E5E5;z-index:100;">
     <a href="../../index.html" style="display:flex;align-items:center;gap:0.6rem;">
-      <img src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
+      <img width="600" height="600" src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
       <span style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#0D0D0D;">Martin Bünger Architekt</span>
     </a>
     <div class="nav-links" style="display:flex;gap:2.5rem;align-items:center;">
@@ -155,12 +191,10 @@
         Bei Bauvorhaben in Bad Honnef übernehmen wir die Bauleitung mit einem eingespielten Netzwerk bewährter Handwerksbetriebe.
       </p>
       <div style="font-size:0.92rem;color:#4B4B4B;line-height:1.8;display:flex;flex-direction:column;gap:1.2rem;">
-        <p>Dieses Netzwerk war bereits an mehreren Projekten am Standort beteiligt – vom Schulerweiterungsneubau bis zur Sanierung eines historischen Wohnhauses von 1900. Kurze Wege zwischen Büro und Baustelle ermöglichen häufige Vor-Ort-Kontrollen statt seltener Stichproben.</p>
+        <p>Dieses Netzwerk war bereits an mehreren Projekten am Standort beteiligt, vom Schulerweiterungsneubau bis zur Sanierung eines historischen Wohnhauses von 1900. Kurze Wege zwischen Büro und Baustelle ermöglichen häufige Vor-Ort-Kontrollen statt seltener Stichproben.</p>
         <p>Gerade im Bestand zeigen sich viele Probleme erst während der Bauausführung, wenn Wände oder Decken geöffnet werden. Konsequente Bauleitung fängt solche Überraschungen früh ab, bevor sie Termine oder Budget sprengen. Details zur Leistung: <a href="../../leistungen/bauleitung.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Leistungsseite Bauleitung</a>. Wie sich versteckte Mängel schon vor dem Kauf erkennen lassen, zeigt unser Beitrag <a href="../../blog/versteckte-maengel-immobilienkauf-erkennen.html" style="color:#0D0D0D;border-bottom:1px solid #D1D1D1;">Versteckte Mängel beim Immobilienkauf erkennen</a>.</p>
       </div>
-      <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E5E5;">
-        Quelle: Projektliste 1998–2025, Architekturbüro Martin Bünger
-      </p>
+      <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #E5E5E5;">Stand: 27. Juli 2026</p>
     </div>
   </section>
 

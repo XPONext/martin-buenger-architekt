@@ -29,23 +29,42 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Martin Bünger Architekt",
-    "description": "Architekturbüro mit Sitz in Bad Honnef, tätig in Sankt Augustin: Kaufberatung, Umbau und Modernisierung im Bestand, Planung nach HOAI, Bauleitung.",
-    "url": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin.html",
-    "telephone": "+49-2224-941306",
-    "email": "martin.buenger@t-online.de",
-    "foundingDate": "1998",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Linzer Straße 21",
-      "postalCode": "53604",
-      "addressLocality": "Bad Honnef",
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    },
-    "areaServed": "Sankt Augustin",
-    "priceRange": "€€"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin.html",
+        "url": "https://martin-buenger-architekt.de/einzugsgebiet/sankt-augustin.html",
+        "name": "Architekt für Sankt Augustin | Kaufberatung, Umbau, Planung",
+        "description": "Architekturbüro Martin Bünger übernimmt Bauvorhaben in Sankt Augustin und dem Rhein-Sieg-Kreis: Kaufberatung, Umbau/Modernisierung, Planung, Bauleitung.",
+        "inLanguage": "de-DE",
+        "isPartOf": {
+          "@id": "https://martin-buenger-architekt.de/#website"
+        },
+        "about": {
+          "@id": "https://martin-buenger-architekt.de/#buero"
+        },
+        "dateModified": "2026-07-27"
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://martin-buenger-architekt.de/#buero",
+        "name": "Martin Bünger Architekt",
+        "url": "https://martin-buenger-architekt.de/",
+        "telephone": "+49-2224-941306",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Linzer Straße 21",
+          "postalCode": "53604",
+          "addressLocality": "Bad Honnef",
+          "addressRegion": "Nordrhein-Westfalen",
+          "addressCountry": "DE"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Sankt Augustin"
+        }
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -119,7 +138,7 @@
   <!-- NAV -->
   <nav style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 6%;position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid #E5E5E5;z-index:100;">
     <a href="../index.html" style="display:flex;align-items:center;gap:0.6rem;">
-      <img src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
+      <img width="600" height="600" src="/images/logo-mb.png" alt="Martin Bünger Architekt" style="height:2.6rem;width:auto;display:block;">
       <span style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#0D0D0D;">Martin Bünger Architekt</span>
     </a>
     <div class="nav-links" style="display:flex;gap:2.5rem;align-items:center;">
@@ -174,7 +193,7 @@
           </summary>
           <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.85rem;">
             <p style="font-size:0.88rem;color:#4B4B4B;line-height:1.75;">
-              In Sankt Augustin haben wir noch keine dokumentierten Referenzprojekte, übernehmen aber auf Anfrage Bauvorhaben in der Stadt – gestützt auf unsere über 25-jährige Praxis in den direkt benachbarten Kommunen.
+              In Sankt Augustin haben wir noch keine dokumentierten Referenzprojekte, übernehmen aber auf Anfrage Bauvorhaben in der Stadt, gestützt auf unsere über 25-jährige Praxis in den direkt benachbarten Kommunen.
             </p>
             <ul style="font-size:0.88rem;color:#4B4B4B;line-height:1.75;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.6rem;">
               <li><strong style="color:#0D0D0D;font-weight:500;">Einwohnerzahl:</strong> 56.568 Einwohner (Stand 31.12.2023), mitten im Rhein-Sieg-Kreis.</li>
@@ -183,6 +202,7 @@
             </ul>
           </div>
         </details>
+        <p style="font-size:0.76rem;color:#9CA3AF;line-height:1.6;margin-top:2rem;">Stand: 27. Juli 2026</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:0;">
 
