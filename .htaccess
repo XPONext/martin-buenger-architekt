@@ -1,3 +1,20 @@
+# ── Eine Adresse: alles auf https://martin-buenger-architekt.de ────────────
+# http:// und www. werden dauerhaft (301) auf die Hauptadresse umgeleitet,
+# damit Besucher immer verschlüsselt ankommen und Google nur eine Adresse sieht.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # http → https. Die zweite Bedingung verhindert eine Endlosschleife, falls
+  # der Server hinter einem Proxy läuft, der die Verschlüsselung übernimmt.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://martin-buenger-architekt.de%{REQUEST_URI} [L,R=301]
+
+  # www → ohne www
+  RewriteCond %{HTTP_HOST} ^www\.martin-buenger-architekt\.de$ [NC]
+  RewriteRule ^ https://martin-buenger-architekt.de%{REQUEST_URI} [L,R=301]
+</IfModule>
+
 # ── Ladezeit: Komprimierung und Zwischenspeichern ─────────────────────────
 # Alle Regeln stehen in IfModule-Blöcken. Fehlt ein Modul auf dem Server,
 # wird der Block übersprungen, statt die Seite mit einem Fehler lahmzulegen.
